@@ -8,8 +8,8 @@ import { FaCheck } from "react-icons/fa6";
 
 const exchangesList =[
     {
-        name: "Binance vendor",
-        icon: "/binance.webp",
+        name: "WUUW Finance",
+        icon: "/maxitap.webp",
         id: "binance",
     },
     {
