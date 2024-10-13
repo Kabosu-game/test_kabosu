@@ -318,7 +318,7 @@ export const UserProvider = ({ children }) => {
   const [userYoutubeTasks, setUserYoutubeTasks] = useState([]);
 
   const assets = [
-    { symbol: 'MAX', name: 'Maxicoin', balance: balance, icon: `${images.tapImage}`, price: 0.0004348 },
+    { symbol: 'WUUW', name: 'WUUW FINANCE', balance: balance, icon: `${images.tapImage}`, price: 0.0004348 },
     { symbol: 'USDT', name: 'Tether US', balance: 0, icon: '/tether.webp', price: 1 },
     { symbol: 'TON', name: 'Toncoin', balance: 0, icon: '/ton.png', price: 6.68 },
     { symbol: 'NOT', name: 'Notcoin', balance: 0, icon: '/notcoin.jpg', price: 0.01075 },
