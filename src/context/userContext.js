@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
-import { doc, getDoc, setDoc, updateDoc, arrayUnion, getDocs, collection, increment } from 'firebase/firestore';
+import { doc, getDoc, setDoc, updateDoc, getDocs, collection, increment } from 'firebase/firestore';
 import { db } from '../firebase/firestore'; // Adjust the path as needed
 import { useLocation } from 'react-router-dom';
 import { images } from '../constants';
@@ -483,20 +483,20 @@ export const UserProvider = ({ children }) => {
     }
   };
 
-  const updateEnergy = async (userRef, batteryValue) => {
-    const savedEndTime = localStorage.getItem('endTime');
-    const savedEnergy = localStorage.getItem('energy');
-    const endTime = new Date(savedEndTime);
-    const newTimeLeft = endTime - new Date();
-    if (newTimeLeft < 0 && savedEnergy <= 0) {
-      try {
-        await updateDoc(userRef, { energy: batteryValue });
-        setEnergy(batteryValue);
-      } catch (error) {
-        console.error('Error updating energy:', error);
-      }
-    }
-  };
+  // const updateEnergy = async (userRef, batteryValue) => {
+  //   const savedEndTime = localStorage.getItem('endTime');
+  //   const savedEnergy = localStorage.getItem('energy');
+  //   const endTime = new Date(savedEndTime);
+  //   const newTimeLeft = endTime - new Date();
+  //   if (newTimeLeft < 0 && savedEnergy <= 0) {
+  //     try {
+  //       await updateDoc(userRef, { energy: batteryValue });
+  //       setEnergy(batteryValue);
+  //     } catch (error) {
+  //       console.error('Error updating energy:', error);
+  //     }
+  //   }
+  // };
 
   const updateActiveTime = async (userRef) => {
 

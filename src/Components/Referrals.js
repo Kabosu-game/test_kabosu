@@ -17,7 +17,7 @@ const Referrals = () => {
   const [copied, setCopied] = useState(false);
 
   const copyToClipboard = () => {
-    const reflink = `https://t.me/${urls.botUsername}?start=r${id}\n\MAX tokens mining is live! Two is better than one!  Join my squad, and let\'s double the fun (and earnings 🤑)! MAX Power Tap! 🚀`;
+    const reflink = `https://t.me/${urls.botUsername}?start=r${id}\n\MAX tokens mining is live! Two is better than one!  Join my squad, and let's double the fun (and earnings 🤑)! MAX Power Tap! 🚀`;
 
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard
