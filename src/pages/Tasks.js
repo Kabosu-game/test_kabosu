@@ -107,7 +107,7 @@ const TasksList = () => {
       setCongrats(true)
 
       setTimeout(() => {
-          setCongrats(false)
+        setCongrats(false)
       }, 4000)
     } catch (error) {
       console.error('Error claiming task:', error);
@@ -126,7 +126,7 @@ const TasksList = () => {
     if (number === undefined || number === null || isNaN(number)) {
       return '';
     }
-  
+
     if (number >= 1000000) {
       return (number / 1000000).toFixed() + 'M';
     } else if (number >= 100000) {
@@ -166,9 +166,9 @@ const TasksList = () => {
       <Animate>
         <div className="w-full pt-1 justify-center flex-col space-y-6 px-5">
 
-      <div className='w-full flex justify-between'>
+          <div className='w-full flex justify-between'>
 
-      {/* <button onClick={() => setShowLevel(true)} className='w-[55%] flex space-x-1 items-center'>
+            {/* <button onClick={() => setShowLevel(true)} className='w-[55%] flex space-x-1 items-center'>
                 <span className='flex items-center justify-center'>
                     
             <img alt="engy" src={level.imgUrl} className='w-[14px] rounded-full h-full'/>
@@ -180,256 +180,249 @@ const TasksList = () => {
             </span>
         </button> */}
 
-<NavLink to='/checkin' className='font-medium text-[15px] text-[#C7B292] flex items-center justify-center space-x-1 relative'>
-<span className="w-[10px] h-[10px] animate-pulse bg-green-500 rounded-full flex items-center" />
-      <span className=''>
-        Daily Checkin
-        </span>  
-        <span className='flex items-center'>  <RiArrowRightSLine size={18} className=''/> </span>
-        </NavLink>
+            <NavLink to='/checkin' className='font-medium text-[15px] text-[#C7B292] flex items-center justify-center space-x-1 relative'>
+              <span className="w-[10px] h-[10px] animate-pulse bg-green-500 rounded-full flex items-center" />
+              <span className=''>
+                Daily Checkin
+              </span>
+              <span className='flex items-center'>  <RiArrowRightSLine size={18} className='' /> </span>
+            </NavLink>
 
 
-    
-          <div className='w-fit py-[2px] px-3 flex items-center space-x-1 justify-center border-[1px] border-[#707070] rounded-[25px]'>
-            <span className='w-[14px]'>
-              <img alt="engy" src={images.logo} className='w-full' />
-            </span>
-            <h1 className="text-[15px] font-bold">
-              {formatNumberCliam(balance + refBonus)}
-            </h1>
-          </div>
+
+            <div className='w-fit py-[2px] px-3 flex items-center space-x-1 justify-center border-[1px] border-[#707070] rounded-[25px]'>
+              <span className='w-[14px]'>
+                <img alt="engy" src={images.logo} className='w-full' />
+              </span>
+              <h1 className="text-[15px] font-bold">
+                {formatNumberCliam(balance + refBonus)}
+              </h1>
+            </div>
 
           </div>
 
           <div className='w-full flex items-center justify-between border-cards border-[1px] p-1 rounded-[8px]'>
 
 
+            <div onClick={() => handleMenu(1)} className={`${activeIndex === 1 ? 'bg-cards text-[#ebebeb]' : ''}  rounded-[6px] text-primary py-[10px] px-3 w-[33%] flex space-x-1 justify-center text-center text-[14px] font-semibold items-center`}>
+              <PiNotebook size={16} className="" />
+              <span>Tasks</span>
+            </div>
+
+            <div onClick={() => handleMenu(2)} className={`${activeIndex === 2 ? 'bg-cards text-[#ebebeb]' : ''}  rounded-[6px] text-primary py-[10px] px-3 w-[33%] space-x-1 font-semibold text-[14px] flex justify-center text-center items-center`}>
+              <PiYoutubeLogo size={16} className="" />
+              <span className='relative'>
+                Videos
+                <span className='absolute h-[8px] w-[8px] bg-red-500 animate-pulse rounded-full -right-3 top-0'>
+
+                </span>
+              </span>
+
+            </div>
+
+            <div onClick={() => handleMenu(3)} className={`${activeIndex === 3 ? 'bg-cards text-[#ebebeb]' : ''}  rounded-[6px] text-primary py-[10px] px-3 w-[33%] space-x-1 font-semibold text-[14px] flex justify-center text-center items-center`}>
+              <PiUsersThree size={16} className=" mt-[-2px]" />
+              <span>
+                Referrals
+              </span>
+
+            </div>
+
+          </div>
 
 
 
-
-
-<div onClick={() => handleMenu(1)} className={`${activeIndex === 1 ? 'bg-cards text-[#ebebeb]' : ''}  rounded-[6px] text-primary py-[10px] px-3 w-[33%] flex space-x-1 justify-center text-center text-[14px] font-semibold items-center`}>
-  <PiNotebook size={16} className="" />
-  <span>Tasks</span>
-</div>
-
-<div onClick={() => handleMenu(2)} className={`${activeIndex === 2 ? 'bg-cards text-[#ebebeb]' : ''}  rounded-[6px] text-primary py-[10px] px-3 w-[33%] space-x-1 font-semibold text-[14px] flex justify-center text-center items-center`}>
-  <PiYoutubeLogo size={16} className="" /> 
-  <span className='relative'>
- Videos
-   <span className='absolute h-[8px] w-[8px] bg-red-500 animate-pulse rounded-full -right-3 top-0'>
-
-   </span>
-  </span>
-
-</div>
-
-<div onClick={() => handleMenu(3)} className={`${activeIndex === 3 ? 'bg-cards text-[#ebebeb]' : ''}  rounded-[6px] text-primary py-[10px] px-3 w-[33%] space-x-1 font-semibold text-[14px] flex justify-center text-center items-center`}>
-  <PiUsersThree size={16} className=" mt-[-2px]" /> 
-   <span>
-   Referrals
-  </span>
-
-</div>
-
-</div>
-
-
-       
 
           <div id="refer" className="w-full h-[80vh] !mt-3 scroller rounded-[10px] overflow-y-auto pt-2 pb-[250px]">
 
 
-{/* tasks */}
-          <div className={`${activeIndex === 1 ? 'block' : 'hidden'} w-full flex items-end justify-center flex-col space-y-4`}>
+            {/* tasks */}
+            <div className={`${activeIndex === 1 ? 'block' : 'hidden'} w-full flex items-end justify-center flex-col space-y-4`}>
 
-          <div className={`px-1`}>
-            <h1 className='text-[18px] font-semibold -mt-2'>
-            Social Tasks
-            </h1>
-            <p className='text-[14px] text-[#c6c6c6] leading-[24px] pr-8'>
-             Perform social tasks to earn more Maxtap tokens and stay updated!
-            </p>
-          </div>
-
-
-          {tasks.map(task => (
-          
-                              <div key={task.id} class="w-[93%] rounded-[25px] bg-gradient-to-r from-[#454545] to-[#575349] p-[1px]">
-    <div class="flex h-full w-full flex-col bg-[#2d2d2d] justify-center rounded-[24px] py-4 pl-12 pr-4 relative">
-        <div className='w-[60px] h-[60px] rounded-[12px] p-2 absolute bsg-[#8a8a8a] bg-[#6b69699c] left-[-7%] todp-[40px] flex items-center justify-center'>
-            <img alt="engy" src={task.icon} className='w-[40px]'/>
-        </div>
-        <div className='flex w-full flex-col justify-between h-full space-y-2'>
-      <h1 class="text-[15px] text-nowrap line-clamp-1 mr-[5px] font-medium">
-      {task.title}
-        </h1>
-      <span className='flex text-primary items-center w-fit space-x-1 text-[14px] font-semibold'>
-        <span className={`w-[10px] h-[10px] bg-btn4 rounded-full flex items-center`}>
-        </span>
-        <span className=''>
-+{formatNumber(task.bonus)}
-        </span>
-      </span>
+              <div className={`px-1`}>
+                <h1 className='text-[18px] font-semibold -mt-2'>
+                  Social Tasks
+                </h1>
+                <p className='text-[14px] text-[#c6c6c6] leading-[24px] pr-8'>
+                  Perform social tasks to earn more Maxtap tokens and stay updated!(test)
+                </p>
+              </div>
 
 
-      <div className='w-full flex items-center justify-between flex-wrap text-[14px] relative'>
+              {tasks.map(task => (
+
+                <div key={task.id} class="w-[93%] rounded-[25px] bg-gradient-to-r from-[#454545] to-[#575349] p-[1px]">
+                  <div class="flex h-full w-full flex-col bg-[#2d2d2d] justify-center rounded-[24px] py-4 pl-12 pr-4 relative">
+                    <div className='w-[60px] h-[60px] rounded-[12px] p-2 absolute bsg-[#8a8a8a] bg-[#6b69699c] left-[-7%] todp-[40px] flex items-center justify-center'>
+                      <img alt="engy" src={task.icon} className='w-[40px]' />
+                    </div>
+                    <div className='flex w-full flex-col justify-between h-full space-y-2'>
+                      <h1 class="text-[15px] text-nowrap line-clamp-1 mr-[5px] font-medium">
+                        {task.title}
+                      </h1>
+                      <span className='flex text-primary items-center w-fit space-x-1 text-[14px] font-semibold'>
+                        <span className={`w-[10px] h-[10px] bg-btn4 rounded-full flex items-center`}>
+                        </span>
+                        <span className=''>
+                          +{formatNumber(task.bonus)}
+                        </span>
+                      </span>
 
 
-      {!completedTasks.includes(task.id) && (
-                  <>
-                    <button
-                      onClick={() => performTask(task.id)}
-                      className={`w-fit py-[6px] px-4 font-medium bg-[#595959cc] hover:bg-[#8a8a8a] text-[#fff] hover:text-[#000] ease-in duration-200 rounded-[6px] ${task.verified && countdownFinished[task.id] ? 'hidden' : ''}`}
-                      disabled={task.verified && countdownFinished[task.id]}
-                    >
-                      Perform
-                    </button>
-                    <button
-                      onClick={() => startCountdown(task.id)}
-                      className={`w-fit py-[6px] px-4 font-medium rounded-[6px] ${countdowns[task.id] ? 'hidden' : showVerifyButtons[task.id] ? `bg-btn4` : 'bg-btn2 text-[#888]'}`}
-                      disabled={!showVerifyButtons[task.id] || (task.verified && countdownFinished[task.id])}
-                    >
-                      Verify
-                    </button>
-                  </>
-                )}
-
-{/*  */}
-
-{countdowns[task.id] ? (
-                  <span className="w-fit py-[6px] px-4 font-medium bg-btn2 rounded-[6px]">
-                    checking.. {countdowns[task.id]}s
-                  </span>
-                ) : (
-                  <>
-                    {task.verified && countdownFinished[task.id] && !completedTasks.includes(task.id) ? <span className="w-fit py-[6px] px-[1.2rem] absolute left-[-1px] font-medium bg-[#494949] text-[#b8b8b8] rounded-[6px]">Done</span> :
-                      currentError[task.id] && <span className={`text-accent pt-2 text-xs w-full`}>{currentError[task.id]}</span>}
-                    {completedTasks.includes(task.id) && (
-                    <> 
-                   
-                    <span className="w-fit py-[6px] px-4 font-medium bg-[#494949] text-[#b8b8b8] rounded-[6px]">Completed</span>
-
-                    <span className='mr-[6px]'>
-
-                      <IoCheckmarkCircleSharp size={24} className={`text-accent`}/>
-
-                    </span>
-                    </>
-                    )}
-                  </>
-                )}
-
-                {/*  */}
-
-                {!completedTasks.includes(task.id) && (
-                  <button
-                    onClick={() => claimTask(task.id)}
-                    disabled={!task.verified || claiming[task.id] || !countdownFinished[task.id]}
-                    className={`w-fit py-[6px] px-4 font-medium bg-btn4 rounded-[6px] ${task.verified && countdownFinished[task.id] ? '' : 'hidden'}`}
-                  >
-                    {claiming[task.id] ? 'Claiming...' : 'Claim'}
-                  </button>
-                )}
+                      <div className='w-full flex items-center justify-between flex-wrap text-[14px] relative'>
 
 
-        </div>
+                        {!completedTasks.includes(task.id) && (
+                          <>
+                            <button
+                              onClick={() => performTask(task.id)}
+                              className={`w-fit py-[6px] px-4 font-medium bg-[#595959cc] hover:bg-[#8a8a8a] text-[#fff] hover:text-[#000] ease-in duration-200 rounded-[6px] ${task.verified && countdownFinished[task.id] ? 'hidden' : ''}`}
+                              disabled={task.verified && countdownFinished[task.id]}
+                            >
+                              Perform
+                            </button>
+                            <button
+                              onClick={() => startCountdown(task.id)}
+                              className={`w-fit py-[6px] px-4 font-medium rounded-[6px] ${countdowns[task.id] ? 'hidden' : showVerifyButtons[task.id] ? `bg-btn4` : 'bg-btn2 text-[#888]'}`}
+                              disabled={!showVerifyButtons[task.id] || (task.verified && countdownFinished[task.id])}
+                            >
+                              Verify
+                            </button>
+                          </>
+                        )}
 
-        {claimError && (
-                <p className={`text-accent pt-2 text-xs w-full`}>{claimError}</p>
-              )}
-        
+                        {/*  */}
+
+                        {countdowns[task.id] ? (
+                          <span className="w-fit py-[6px] px-4 font-medium bg-btn2 rounded-[6px]">
+                            checking.. {countdowns[task.id]}s
+                          </span>
+                        ) : (
+                          <>
+                            {task.verified && countdownFinished[task.id] && !completedTasks.includes(task.id) ? <span className="w-fit py-[6px] px-[1.2rem] absolute left-[-1px] font-medium bg-[#494949] text-[#b8b8b8] rounded-[6px]">Done</span> :
+                              currentError[task.id] && <span className={`text-accent pt-2 text-xs w-full`}>{currentError[task.id]}</span>}
+                            {completedTasks.includes(task.id) && (
+                              <>
+
+                                <span className="w-fit py-[6px] px-4 font-medium bg-[#494949] text-[#b8b8b8] rounded-[6px]">Completed</span>
+
+                                <span className='mr-[6px]'>
+
+                                  <IoCheckmarkCircleSharp size={24} className={`text-accent`} />
+
+                                </span>
+                              </>
+                            )}
+                          </>
+                        )}
+
+                        {/*  */}
+
+                        {!completedTasks.includes(task.id) && (
+                          <button
+                            onClick={() => claimTask(task.id)}
+                            disabled={!task.verified || claiming[task.id] || !countdownFinished[task.id]}
+                            className={`w-fit py-[6px] px-4 font-medium bg-btn4 rounded-[6px] ${task.verified && countdownFinished[task.id] ? '' : 'hidden'}`}
+                          >
+                            {claiming[task.id] ? 'Claiming...' : 'Claim'}
+                          </button>
+                        )}
 
 
-      </div>
-    </div>
-  </div>
-           
-          ))}
+                      </div>
 
-
-<ManualTasks />
+                      {claimError && (
+                        <p className={`text-accent pt-2 text-xs w-full`}>{claimError}</p>
+                      )}
 
 
 
-          </div>
+                    </div>
+                  </div>
+                </div>
+
+              ))}
 
 
-{/* challenges */}
-
-<div className={`${activeIndex === 2 ? 'block' : 'hidden'} w-full flex items-end justify-center flex-col space-y-4`}>
-<div className={`px-1`}>
-            <h1 className='text-[18px] font-semibold -mt-2'>
-           Watch & earn
-            </h1>
-            <p className='text-[14px] text-[#c6c6c6] leading-[24px] pr-8'>
-              Watch video ads and earn high token rewards daily!
-            </p>
-          </div>
-<YouTubeTasks />
-
-  </div>
-
-<div className={`${activeIndex === 3 ? 'block' : 'hidden'} w-full flex items-end justify-center flex-col space-y-4`}>
-<div className={`px-1`}>
-            <h1 className='text-[18px] font-semibold -mt-2'>
-            Invite friends, get rewards!
-            </h1>
-            <p className='text-[14px] leading-[24px] pr-8'>
-            The more frens you refer, the more you earn and get rewarded!
-            </p>
-          </div>
-
-<Referrals />
-
-  </div>
+              <ManualTasks />
 
 
 
-          </div>
-
-   
-
-<div className='w-full absolute top-[50px] left-0 right-0 flex justify-center z-50 pointer-events-none select-none'>
-      {congrats ? (<img src='/congrats.gif' alt="congrats" className="w-[80%]"/>) : (<></>)}
-      </div>
-
-      <div
-        className={`${
-          modalOpen === true ? "visible" : "invisible"
-        } fixed top-[-12px] bottom-0 left-0 z-40 right-0 h-[100vh] bg-[#00000042] flex justify-center items-center backdrop-blur-[6px] px-4`}
-      >
-  
-
-    <div className={`${
-          modalOpen === true ? "opacity-100 mt-0 ease-in duration-300" : "opacity-0 mt-[100px]"
-        } w-full bg-modal relative rounded-[16px] flex flex-col justify-center p-8`}>
-          <div className="w-full flex justify-center flex-col items-center space-y-3">
-            <div className="w-full items-center justify-center flex flex-col space-y-2">
-              <IoCheckmarkCircleSharp size={32} className={`text-accent`}/>
-              <p className='font-medium'>Let's go!!</p>
             </div>
-            <h3 className="font-medium text-[20px] text-[#ffffff] pt-2 pb-2">
-              <span className={`text-accent`}>+{formatNumberCliam(claimedBonus)}</span> {texts.projectSymbol} CLAIMED
-            </h3>
-            <p className="pb-6 text-[#9a96a6] text-[15px] w-full text-center">
-              Keep performing new tasks! something huge is coming! Perform more and earn more {texts.projectSymbol} now! 
-            </p>
+
+
+            {/* challenges */}
+
+            <div className={`${activeIndex === 2 ? 'block' : 'hidden'} w-full flex items-end justify-center flex-col space-y-4`}>
+              <div className={`px-1`}>
+                <h1 className='text-[18px] font-semibold -mt-2'>
+                  Watch & earn
+                </h1>
+                <p className='text-[14px] text-[#c6c6c6] leading-[24px] pr-8'>
+                  Watch video ads and earn high token rewards daily!
+                </p>
+              </div>
+              <YouTubeTasks />
+
+            </div>
+
+            <div className={`${activeIndex === 3 ? 'block' : 'hidden'} w-full flex items-end justify-center flex-col space-y-4`}>
+              <div className={`px-1`}>
+                <h1 className='text-[18px] font-semibold -mt-2'>
+                  Invite friends, get rewards!
+                </h1>
+                <p className='text-[14px] leading-[24px] pr-8'>
+                  The more frens you refer, the more you earn and get rewarded!
+                </p>
+              </div>
+
+              <Referrals />
+
+            </div>
+
+
+
           </div>
 
-          <div className="w-full flex justify-center">
-            <button
-              onClick={closeModal}
-              className={`bg-btn4 w-fit py-[10px] px-6 flex items-center justify-center text-center rounded-[12px] font-medium text-[16px]`}
-            >
-             Continue tasks
-            </button>
-          </div>
-        </div>
-      </div>
 
-      <Levels showLevel={showLevel} setShowLevel={setShowLevel} />
+
+          <div className='w-full absolute top-[50px] left-0 right-0 flex justify-center z-50 pointer-events-none select-none'>
+            {congrats ? (<img src='/congrats.gif' alt="congrats" className="w-[80%]" />) : (<></>)}
+          </div>
+
+          <div
+            className={`${modalOpen === true ? "visible" : "invisible"
+              } fixed top-[-12px] bottom-0 left-0 z-40 right-0 h-[100vh] bg-[#00000042] flex justify-center items-center backdrop-blur-[6px] px-4`}
+          >
+
+
+            <div className={`${modalOpen === true ? "opacity-100 mt-0 ease-in duration-300" : "opacity-0 mt-[100px]"
+              } w-full bg-modal relative rounded-[16px] flex flex-col justify-center p-8`}>
+              <div className="w-full flex justify-center flex-col items-center space-y-3">
+                <div className="w-full items-center justify-center flex flex-col space-y-2">
+                  <IoCheckmarkCircleSharp size={32} className={`text-accent`} />
+                  <p className='font-medium'>Let's go!!</p>
+                </div>
+                <h3 className="font-medium text-[20px] text-[#ffffff] pt-2 pb-2">
+                  <span className={`text-accent`}>+{formatNumberCliam(claimedBonus)}</span> {texts.projectSymbol} CLAIMED
+                </h3>
+                <p className="pb-6 text-[#9a96a6] text-[15px] w-full text-center">
+                  Keep performing new tasks! something huge is coming! Perform more and earn more {texts.projectSymbol} now!
+                </p>
+              </div>
+
+              <div className="w-full flex justify-center">
+                <button
+                  onClick={closeModal}
+                  className={`bg-btn4 w-fit py-[10px] px-6 flex items-center justify-center text-center rounded-[12px] font-medium text-[16px]`}
+                >
+                  Continue tasks
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <Levels showLevel={showLevel} setShowLevel={setShowLevel} />
 
         </div>
         <Outlet />

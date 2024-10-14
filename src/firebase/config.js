@@ -1,8 +1,6 @@
-//* Import the functions you need from the SDKs you need
 import { initializeApp, getApps } from 'firebase/app';
 import { getAuth, setPersistence, browserLocalPersistence } from 'firebase/auth';
 
-//* Add the Web App's Firebase configuration
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
   authDomain: process.env.REACT_APP_AUTH_DOMAIN,
@@ -12,10 +10,13 @@ const firebaseConfig = {
   appId: process.env.REACT_APP_APP_ID,
 };
 
-//* Initialize Firebase
-let firebase_app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0];
+let firebase_app;
+try {
+  firebase_app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0];
+} catch (error) {
+  console.error("Firebase initialization error:", error);
+}
 
-//* Initialize Firebase Auth and set persistence
 const auth = getAuth(firebase_app);
 setPersistence(auth, browserLocalPersistence)
   .then(() => {
