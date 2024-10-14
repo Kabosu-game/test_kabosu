@@ -12,6 +12,5 @@ export const images = {
   export const urls = {
     appUrl: "https://maxitap.netlify.app",
     botUsername: "maxitapbot",
-
   }
   

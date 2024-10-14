@@ -10,7 +10,7 @@ import twitter from "../images/twitter.svg";
 import telegram from "../images/telegram.svg";
 import facebook from "../images/facebook.svg";
 import { RxArrowRight } from "react-icons/rx";
-import { texts } from "../constants";
+import { texts, urls } from "../constants";
 
 const Referrals = () => {
   const { id, refBonus, referrals, loading } = useUser();

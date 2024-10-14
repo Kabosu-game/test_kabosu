@@ -189,57 +189,65 @@ const YouTubeTasks = () => {
 
     return (
         <>
-            {youtubeTasks
-                .sort((a, b) => a.id - b.id)
-                .map(task => {
-                    const userTask = userYoutubeTasks.find(t => t.taskId === task.id);
-                    const isTaskCompleted = userTask ? userTask.completed : false;
-                    return (
-                        <div key={task.id} onClick={() => setOpenTask(task)} className="w-full rounded-[16px] bg-cards p-4 pl-3 flex items-start space-x-2">
-                            <div className='flex items-center justify-center'>
-                                <img alt="engy" src={task.icon} className='w-[40px]' />
-                            </div>
-                            <div className="flex h-full w-full flex-col justify-center relative">
-                                <div className='flex w-full flex-col justify-between h-full space-y-1'>
-                                    <h1 className="text-[15px] text-nowrap line-clamp-1 mr-[5px] font-medium">
-                                        {task.title}
-                                    </h1>
-                                    <span className='flex text-primary items-center w-fit space-x-1 text-[14px] font-semibold'>
-                                        <span className="w-[10px] h-[10px] bg-btn4 rounded-full flex items-center" />
-                                        <span className=''>
-                                            +{formatNumber(task.bonus)}
+            {youtubeTasks.length === 0 ? (
+                <div className="w-full flex justify-center items-center h-[80vh]">
+                    <p className="text-center text-[18px] font-semibold text-[#c6c6c6]">
+                        Aucune tâche YouTube disponible.
+                    </p>
+                </div>
+            ) : (
+                youtubeTasks
+                    .sort((a, b) => a.id - b.id)
+                    .map(task => {
+                        const userTask = userYoutubeTasks.find(t => t.taskId === task.id);
+                        const isTaskCompleted = userTask ? userTask.completed : false;
+                        return (
+                            <div key={task.id} onClick={() => setOpenTask(task)} className="w-full rounded-[16px] bg-cards p-4 pl-3 flex items-start space-x-2">
+                                <div className='flex items-center justify-center'>
+                                    <img alt="engy" src={task.icon} className='w-[40px]' />
+                                </div>
+                                <div className="flex h-full w-full flex-col justify-center relative">
+                                    <div className='flex w-full flex-col justify-between h-full space-y-1'>
+                                        <h1 className="text-[15px] text-nowrap line-clamp-1 mr-[5px] font-medium">
+                                            {task.title}
+                                        </h1>
+                                        <span className='flex text-primary items-center w-fit space-x-1 text-[14px] font-semibold'>
+                                            <span className="w-[10px] h-[10px] bg-btn4 rounded-full flex items-center" />
+                                            <span className=''>
+                                                +{formatNumber(task.bonus)}
+                                            </span>
                                         </span>
-                                    </span>
-                                    <div className='w-full flex items-center justify-between flex-wrap text-[14px] relative'>
-                                        {isTaskCompleted ? (
-                                            <>
-                                                <span className="w-fit py-[6px] px-4 font-medium bg-[#494949] text-[#b8b8b8] rounded-[6px]">Completed</span>
-                                                <span className='mr-[6px]'>
-                                                    <IoCheckmarkCircleSharp size={24} className="text-btn4" />
-                                                </span>
-                                            </>
-                                        ) : (
-                                            <>
-                                                <button
-                                                    onClick={() => setOpenTask(task)}
-                                                    className="w-fit py-[6px] px-4 font-medium bg-[#8f8f8f85] hover:bg-[#8a8a8a] text-[#fff] hover:text-[#000] ease-in duration-200 rounded-[6px]"
-                                                >
-                                                    Perform
-                                                </button>
-                                                <button
-                                                    onClick={() => setOpenTask(task)}
-                                                    className="w-fit py-[6px] px-4 font-medium bg-btn2 text-[#888] ease-in duration-200 rounded-[6px]"
-                                                >
-                                                    Pending
-                                                </button>
-                                            </>
-                                        )}
+                                        <div className='w-full flex items-center justify-between flex-wrap text-[14px] relative'>
+                                            {isTaskCompleted ? (
+                                                <>
+                                                    <span className="w-fit py-[6px] px-4 font-medium bg-[#494949] text-[#b8b8b8] rounded-[6px]">Completed</span>
+                                                    <span className='mr-[6px]'>
+                                                        <IoCheckmarkCircleSharp size={24} className="text-btn4" />
+                                                    </span>
+                                                </>
+                                            ) : (
+                                                <>
+                                                    <button
+                                                        onClick={() => setOpenTask(task)}
+                                                        className="w-fit py-[6px] px-4 font-medium bg-[#8f8f8f85] hover:bg-[#8a8a8a] text-[#fff] hover:text-[#000] ease-in duration-200 rounded-[6px]"
+                                                    >
+                                                        Perform
+                                                    </button>
+                                                    <button
+                                                        onClick={() => setOpenTask(task)}
+                                                        className="w-fit py-[6px] px-4 font-medium bg-btn2 text-[#888] ease-in duration-200 rounded-[6px]"
+                                                    >
+                                                        Pending
+                                                    </button>
+                                                </>
+                                            )}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    );
-                })}
+                        );
+                    })
+            )}
             {openTask && (
                 <TaskModal
                     task={openTask}

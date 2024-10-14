@@ -244,104 +244,110 @@ const TasksList = () => {
                   Social Tasks
                 </h1>
                 <p className='text-[14px] text-[#c6c6c6] leading-[24px] pr-8'>
-                  Perform social tasks to earn more Maxtap tokens and stay updated!(test)
+                  Perform social tasks to earn more Maxtap tokens and stay updated!
                 </p>
               </div>
 
 
-              {tasks.map(task => (
-
-                <div key={task.id} class="w-[93%] rounded-[25px] bg-gradient-to-r from-[#454545] to-[#575349] p-[1px]">
-                  <div class="flex h-full w-full flex-col bg-[#2d2d2d] justify-center rounded-[24px] py-4 pl-12 pr-4 relative">
-                    <div className='w-[60px] h-[60px] rounded-[12px] p-2 absolute bsg-[#8a8a8a] bg-[#6b69699c] left-[-7%] todp-[40px] flex items-center justify-center'>
-                      <img alt="engy" src={task.icon} className='w-[40px]' />
-                    </div>
-                    <div className='flex w-full flex-col justify-between h-full space-y-2'>
-                      <h1 class="text-[15px] text-nowrap line-clamp-1 mr-[5px] font-medium">
-                        {task.title}
-                      </h1>
-                      <span className='flex text-primary items-center w-fit space-x-1 text-[14px] font-semibold'>
-                        <span className={`w-[10px] h-[10px] bg-btn4 rounded-full flex items-center`}>
-                        </span>
-                        <span className=''>
-                          +{formatNumber(task.bonus)}
-                        </span>
-                      </span>
-
-
-                      <div className='w-full flex items-center justify-between flex-wrap text-[14px] relative'>
-
-
-                        {!completedTasks.includes(task.id) && (
-                          <>
-                            <button
-                              onClick={() => performTask(task.id)}
-                              className={`w-fit py-[6px] px-4 font-medium bg-[#595959cc] hover:bg-[#8a8a8a] text-[#fff] hover:text-[#000] ease-in duration-200 rounded-[6px] ${task.verified && countdownFinished[task.id] ? 'hidden' : ''}`}
-                              disabled={task.verified && countdownFinished[task.id]}
-                            >
-                              Perform
-                            </button>
-                            <button
-                              onClick={() => startCountdown(task.id)}
-                              className={`w-fit py-[6px] px-4 font-medium rounded-[6px] ${countdowns[task.id] ? 'hidden' : showVerifyButtons[task.id] ? `bg-btn4` : 'bg-btn2 text-[#888]'}`}
-                              disabled={!showVerifyButtons[task.id] || (task.verified && countdownFinished[task.id])}
-                            >
-                              Verify
-                            </button>
-                          </>
-                        )}
-
-                        {/*  */}
-
-                        {countdowns[task.id] ? (
-                          <span className="w-fit py-[6px] px-4 font-medium bg-btn2 rounded-[6px]">
-                            checking.. {countdowns[task.id]}s
-                          </span>
-                        ) : (
-                          <>
-                            {task.verified && countdownFinished[task.id] && !completedTasks.includes(task.id) ? <span className="w-fit py-[6px] px-[1.2rem] absolute left-[-1px] font-medium bg-[#494949] text-[#b8b8b8] rounded-[6px]">Done</span> :
-                              currentError[task.id] && <span className={`text-accent pt-2 text-xs w-full`}>{currentError[task.id]}</span>}
-                            {completedTasks.includes(task.id) && (
-                              <>
-
-                                <span className="w-fit py-[6px] px-4 font-medium bg-[#494949] text-[#b8b8b8] rounded-[6px]">Completed</span>
-
-                                <span className='mr-[6px]'>
-
-                                  <IoCheckmarkCircleSharp size={24} className={`text-accent`} />
-
-                                </span>
-                              </>
-                            )}
-                          </>
-                        )}
-
-                        {/*  */}
-
-                        {!completedTasks.includes(task.id) && (
-                          <button
-                            onClick={() => claimTask(task.id)}
-                            disabled={!task.verified || claiming[task.id] || !countdownFinished[task.id]}
-                            className={`w-fit py-[6px] px-4 font-medium bg-btn4 rounded-[6px] ${task.verified && countdownFinished[task.id] ? '' : 'hidden'}`}
-                          >
-                            {claiming[task.id] ? 'Claiming...' : 'Claim'}
-                          </button>
-                        )}
-
-
-                      </div>
-
-                      {claimError && (
-                        <p className={`text-accent pt-2 text-xs w-full`}>{claimError}</p>
-                      )}
-
-
-
-                    </div>
+              {tasks.length === 0 ? (
+                  <div className="w-full flex justify-center items-center">
+                      <p className="text-center text-[18px] font-semibold text-[#c6c6c6]">
+                          Aucune tâche disponible.
+                      </p>
                   </div>
-                </div>
+              ) : (
+                  tasks.map(task => (
+                      <div key={task.id} className="w-[93%] rounded-[25px] bg-gradient-to-r from-[#454545] to-[#575349] p-[1px]">
+                        <div className="flex h-full w-full flex-col bg-[#2d2d2d] justify-center rounded-[24px] py-4 pl-12 pr-4 relative">
+                          <div className='w-[60px] h-[60px] rounded-[12px] p-2 absolute bsg-[#8a8a8a] bg-[#6b69699c] left-[-7%] todp-[40px] flex items-center justify-center'>
+                            <img alt="engy" src={task.icon} className='w-[40px]' />
+                          </div>
+                          <div className='flex w-full flex-col justify-between h-full space-y-2'>
+                            <h1 className="text-[15px] text-nowrap line-clamp-1 mr-[5px] font-medium">
+                              {task.title}
+                            </h1>
+                            <span className='flex text-primary items-center w-fit space-x-1 text-[14px] font-semibold'>
+                              <span className={`w-[10px] h-[10px] bg-btn4 rounded-full flex items-center`}>
+                              </span>
+                              <span className=''>
+                                +{formatNumber(task.bonus)}
+                              </span>
+                            </span>
 
-              ))}
+
+                            <div className='w-full flex items-center justify-between flex-wrap text-[14px] relative'>
+
+
+                              {!completedTasks.includes(task.id) && (
+                                <>
+                                  <button
+                                    onClick={() => performTask(task.id)}
+                                    className={`w-fit py-[6px] px-4 font-medium bg-[#595959cc] hover:bg-[#8a8a8a] text-[#fff] hover:text-[#000] ease-in duration-200 rounded-[6px] ${task.verified && countdownFinished[task.id] ? 'hidden' : ''}`}
+                                    disabled={task.verified && countdownFinished[task.id]}
+                                  >
+                                    Perform
+                                  </button>
+                                  <button
+                                    onClick={() => startCountdown(task.id)}
+                                    className={`w-fit py-[6px] px-4 font-medium rounded-[6px] ${countdowns[task.id] ? 'hidden' : showVerifyButtons[task.id] ? `bg-btn4` : 'bg-btn2 text-[#888]'}`}
+                                    disabled={!showVerifyButtons[task.id] || (task.verified && countdownFinished[task.id])}
+                                  >
+                                    Verify
+                                  </button>
+                                </>
+                              )}
+
+                              {/*  */}
+
+                              {countdowns[task.id] ? (
+                                <span className="w-fit py-[6px] px-4 font-medium bg-btn2 rounded-[6px]">
+                                  checking.. {countdowns[task.id]}s
+                                </span>
+                              ) : (
+                                <>
+                                  {task.verified && countdownFinished[task.id] && !completedTasks.includes(task.id) ? <span className="w-fit py-[6px] px-[1.2rem] absolute left-[-1px] font-medium bg-[#494949] text-[#b8b8b8] rounded-[6px]">Done</span> :
+                                    currentError[task.id] && <span className={`text-accent pt-2 text-xs w-full`}>{currentError[task.id]}</span>}
+                                  {completedTasks.includes(task.id) && (
+                                    <>
+
+                                      <span className="w-fit py-[6px] px-4 font-medium bg-[#494949] text-[#b8b8b8] rounded-[6px]">Completed</span>
+
+                                      <span className='mr-[6px]'>
+
+                                        <IoCheckmarkCircleSharp size={24} className={`text-accent`} />
+
+                                      </span>
+                                    </>
+                                  )}
+                                </>
+                              )}
+
+                              {/*  */}
+
+                              {!completedTasks.includes(task.id) && (
+                                <button
+                                  onClick={() => claimTask(task.id)}
+                                  disabled={!task.verified || claiming[task.id] || !countdownFinished[task.id]}
+                                  className={`w-fit py-[6px] px-4 font-medium bg-btn4 rounded-[6px] ${task.verified && countdownFinished[task.id] ? '' : 'hidden'}`}
+                                >
+                                  {claiming[task.id] ? 'Claiming...' : 'Claim'}
+                                </button>
+                              )}
+
+
+                            </div>
+
+                            {claimError && (
+                              <p className={`text-accent pt-2 text-xs w-full`}>{claimError}</p>
+                            )}
+
+
+
+                          </div>
+                        </div>
+                      </div>
+                  ))
+              )}
 
 
               <ManualTasks />
