@@ -796,7 +796,7 @@ const GoldHunters = () => {
                     </div>
                     <div className="w-[350px] relative flex items-center justify-center">
 
-                      <img src='/lihgt.webp'
+                      <img src='/maxitap.webp'
                         alt='err' className={`absolute w-[276px] rotate-45 ${tapGuru ? 'block' : 'hidden'}`} />
 
 
