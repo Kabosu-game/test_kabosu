@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
-import { doc, getDoc, setDoc, updateDoc, arrayUnion, getDocs, collection } from 'firebase/firestore';
+import { doc, getDoc, setDoc, updateDoc, arrayUnion, getDocs, collection, increment } from 'firebase/firestore';
 import { db } from '../firebase/firestore'; // Adjust the path as needed
 import { useLocation } from 'react-router-dom';
 import { images } from '../constants';
@@ -333,6 +333,7 @@ export const UserProvider = ({ children }) => {
   const [spinLimit, setSpinLimit] = useState(spinnerLimit); // New state for spin limit
 
   useEffect(() => {
+    //sendUserData();
     let timerId;
     if (isTimerRunning && time > 0) {
       timerId = setInterval(() => {
@@ -435,80 +436,49 @@ export const UserProvider = ({ children }) => {
 
   const sendUserData = async () => {
     const queryParams = new URLSearchParams(window.location.search);
-    let referrerId = queryParams.get("ref");
+    let referrerId = queryParams.get("start") ? queryParams.get("start").replace("r", "") : null;
+
     if (referrerId) {
-      referrerId = referrerId.replace(/\D/g, "");
+      referrerId = referrerId.replace(/\D/g, ""); // Nettoyer l'ID
     }
 
     if (telegramUser) {
-      const { id: userId, username, first_name: firstName, last_name: lastName } = telegramUser;
-      const finalUsername = username || `${firstName}_${userId}`;
-      const fullNamed = `${firstName} ${lastName}`
+      const { id: userId } = telegramUser;
+      const userRef = doc(db, 'telegramUsers', userId.toString());
+      const referrerRef = doc(db, 'telegramUsers', referrerId);
 
       try {
-        const userRef = doc(db, 'telegramUsers', userId.toString());
         const userDoc = await getDoc(userRef);
+        const referrerDoc = await getDoc(referrerRef);
+
         if (userDoc.exists()) {
-          fetchData(userId.toString());
-          await updateEnergy(userRef, userDoc.data().battery.energy);
-          await updateReferrals(userRef);
-          setInitialized(true);
-          return;
+          // L'utilisateur existe déjà, vous pouvez mettre à jour ses données
+          await updateDoc(userRef, {
+            // Autres mises à jour si nécessaire
+          });
+        } else {
+          // Créer un nouvel utilisateur
+          const userData = {
+            userId: userId.toString(),
+            // Autres données utilisateur
+            balance: 0,
+            tapBalance: 0,
+            // ...
+          };
+          await setDoc(userRef, userData);
         }
 
-        const userData = {
-          userId: userId.toString(),
-          username: finalUsername,
-          firstName: firstName,
-          lastName: lastName,
-          fullName: fullNamed,
-          totalBalance: 0,
-          showBalance: true,
-          profitHour: 0,
-          spinLimit: 10,
-          isAddressSaved: false,
-          address: '',
-          balance: 0,
-          tapBalance: 0,
-          lastActive: new Date(),
-          character: { name: '', avatar: '/user.webp' },
-          freeGuru: 3,
-          tapValue: { level: 1, value: 1 },
-          level: { id: 1, name: "Bronze", imgUrl: "/bronze.webp" },
-          selectedExchange: { id: 'selectex', icon: '/exchange.svg', name: 'Choose exchange' },
-          energy: 500,
-          battery: { level: 1, energy: 500 },
-          refereeId: referrerId || null,
-          referrals: []
-        };
+        await updateDoc(userRef, {
+          balance: increment(100) // Ajoutez 100KTAP
+        });
 
-        await setDoc(userRef, userData);
-        setEnergy(500);
-        setFreeGuru(userData.freeGuru);
-        setSelectedCharacter(userData.character)
-        setFullName(fullNamed)
-        setCharacterMenu(true);
-        setSelectedExchange({ id: 'selectex', name: 'Choose exchange', icon: '/exchange.svg' });
-        setId(userId.toString());
-
-        if (referrerId) {
-          const referrerRef = doc(db, 'telegramUsers', referrerId);
-          const referrerDoc = await getDoc(referrerRef);
-          if (referrerDoc.exists()) {
-            await updateDoc(referrerRef, {
-              referrals: arrayUnion({
-                userId: userId.toString(),
-                username: finalUsername,
-                balance: 0,
-                level: { id: 1, name: "Bronze", imgUrl: "/bronze.webp" },
-              })
-            });
-          }
+        if (referrerDoc.exists()) {
+          await updateDoc(referrerRef, {
+            balance: increment(100) // Ajoutez 100KTAP au créateur du lien
+          });
         }
-        setInitialized(true);
-        fetchData(userId.toString());
       } catch (error) {
-        console.error('Error saving user in Firestore:', error);
+        console.error("Erreur lors de la mise à jour des données utilisateur :", error);
       }
     }
   };
@@ -677,8 +647,6 @@ export const UserProvider = ({ children }) => {
 
     fetchUserData();
   }, [id, telegramUser]);
-
-
 
 
   const checkAndUpdateFreeGuru = async () => {
