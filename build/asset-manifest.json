@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.9cef364b.css",
-    "main.js": "/static/js/main.c5d4aac4.js",
+    "main.css": "/static/css/main.bd88472d.css",
+    "main.js": "/static/js/main.c29c8e97.js",
     "static/media/loading.jpg": "/static/media/loading.98a78e2d4f270099ce74.jpg",
     "index.html": "/index.html",
     "static/media/coinsmall.webp": "/static/media/coinsmall.f6f06ff640e5df45b650.webp",
@@ -11,7 +11,7 @@
     "static/media/telegram.svg": "/static/media/telegram.c7b359a0105dea5ce0362d65465c4633.svg"
   },
   "entrypoints": [
-    "static/css/main.9cef364b.css",
-    "static/js/main.c5d4aac4.js"
+    "static/css/main.bd88472d.css",
+    "static/js/main.c29c8e97.js"
   ]
 }

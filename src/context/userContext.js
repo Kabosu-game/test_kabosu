@@ -3,6 +3,7 @@ import { doc, getDoc, setDoc, updateDoc, arrayUnion, getDocs, collection } from 
 import { db } from '../firebase/firestore'; // Adjust the path as needed
 import { useLocation } from 'react-router-dom';
 import { images } from '../constants';
+import { friendsRewards } from '../constants';
 
 const UserContext = createContext();
 
@@ -438,6 +439,7 @@ export const UserProvider = ({ children }) => {
     let referrerId = queryParams.get("ref");
     if (referrerId) {
       referrerId = referrerId.replace(/\D/g, "");
+      handleReferral(referrerId);
     }
 
     if (telegramUser) {
@@ -510,6 +512,42 @@ export const UserProvider = ({ children }) => {
       } catch (error) {
         console.error('Error saving user in Firestore:', error);
       }
+    }
+  };
+
+  const handleReferral = async (referralId) => {
+    const userRef = doc(db, 'telegramUsers', referralId);
+    const userDoc = await getDoc(userRef);
+  
+    if (userDoc.exists()) {
+      const userData = userDoc.data();
+      const hasClaimedReward = userData.claimedReferralRewards || [];
+  
+      // Vérifiez si l'utilisateur a déjà réclamé la récompense
+      if (!hasClaimedReward.includes('Referral Bonus')) {
+        // Vérifiez si le nouvel utilisateur a atteint le nombre de parrainages requis
+        const referralsCount = userData.referrals.length; // Nombre de parrainages de l'utilisateur
+        const reward = friendsRewards.find(reward => referralsCount >= reward.referralsRequired);
+  
+        if (reward) {
+          const newBalance = userData.balance + reward.bonusAward; // Montant de la récompense
+          try {
+            await updateDoc(userRef, {
+              balance: newBalance,
+              claimedReferralRewards: arrayUnion('Referral Bonus'), // Ajoute la récompense à la liste
+            });
+            console.log('Récompense de parrainage attribuée avec succès.');
+          } catch (error) {
+            console.error('Erreur lors de l\'attribution de la récompense de parrainage:', error);
+          }
+        } else {
+          console.log('L\'utilisateur n\'a pas atteint le nombre de parrainages requis pour une récompense.');
+        }
+      } else {
+        console.log('L\'utilisateur a déjà réclamé cette récompense.');
+      }
+    } else {
+      console.log('Utilisateur non trouvé.');
     }
   };
 
