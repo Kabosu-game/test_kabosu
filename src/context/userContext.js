@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
-import { doc, getDoc, setDoc, updateDoc, getDocs, collection, increment } from 'firebase/firestore';
+import { doc, getDoc, setDoc, updateDoc, arrayUnion, getDocs, collection } from 'firebase/firestore';
 import { db } from '../firebase/firestore'; // Adjust the path as needed
 import { useLocation } from 'react-router-dom';
 import { images } from '../constants';
@@ -318,7 +318,7 @@ export const UserProvider = ({ children }) => {
   const [userYoutubeTasks, setUserYoutubeTasks] = useState([]);
 
   const assets = [
-    { symbol: 'MAX', name: 'Maxicoin', balance: balance, icon: `${images.tapImage}`, price: 0.0004348 },
+    { symbol: 'WUUW', name: 'WUUW FINANCE', balance: balance, icon: `${images.tapImage}`, price: 0.0004348 },
     { symbol: 'USDT', name: 'Tether US', balance: 0, icon: '/tether.webp', price: 1 },
     { symbol: 'TON', name: 'Toncoin', balance: 0, icon: '/ton.png', price: 6.68 },
     { symbol: 'NOT', name: 'Notcoin', balance: 0, icon: '/notcoin.jpg', price: 0.01075 },
@@ -333,7 +333,6 @@ export const UserProvider = ({ children }) => {
   const [spinLimit, setSpinLimit] = useState(spinnerLimit); // New state for spin limit
 
   useEffect(() => {
-    //sendUserData();
     let timerId;
     if (isTimerRunning && time > 0) {
       timerId = setInterval(() => {
@@ -436,49 +435,80 @@ export const UserProvider = ({ children }) => {
 
   const sendUserData = async () => {
     const queryParams = new URLSearchParams(window.location.search);
-    let referrerId = queryParams.get("start") ? queryParams.get("start").replace("r", "") : null;
-
+    let referrerId = queryParams.get("ref");
     if (referrerId) {
-      referrerId = referrerId.replace(/\D/g, ""); // Nettoyer l'ID
+      referrerId = referrerId.replace(/\D/g, "");
     }
 
     if (telegramUser) {
-      const { id: userId } = telegramUser;
-      const userRef = doc(db, 'telegramUsers', userId.toString());
-      const referrerRef = doc(db, 'telegramUsers', referrerId);
+      const { id: userId, username, first_name: firstName, last_name: lastName } = telegramUser;
+      const finalUsername = username || `${firstName}_${userId}`;
+      const fullNamed = `${firstName} ${lastName}`
 
       try {
+        const userRef = doc(db, 'telegramUsers', userId.toString());
         const userDoc = await getDoc(userRef);
-        const referrerDoc = await getDoc(referrerRef);
-
         if (userDoc.exists()) {
-          // L'utilisateur existe déjà, vous pouvez mettre à jour ses données
-          await updateDoc(userRef, {
-            // Autres mises à jour si nécessaire
-          });
-        } else {
-          // Créer un nouvel utilisateur
-          const userData = {
-            userId: userId.toString(),
-            // Autres données utilisateur
-            balance: 0,
-            tapBalance: 0,
-            // ...
-          };
-          await setDoc(userRef, userData);
+          fetchData(userId.toString());
+          await updateEnergy(userRef, userDoc.data().battery.energy);
+          await updateReferrals(userRef);
+          setInitialized(true);
+          return;
         }
 
-        await updateDoc(userRef, {
-          balance: increment(100) // Ajoutez 100KTAP
-        });
+        const userData = {
+          userId: userId.toString(),
+          username: finalUsername,
+          firstName: firstName,
+          lastName: lastName,
+          fullName: fullNamed,
+          totalBalance: 0,
+          showBalance: true,
+          profitHour: 0,
+          spinLimit: 10,
+          isAddressSaved: false,
+          address: '',
+          balance: 0,
+          tapBalance: 0,
+          lastActive: new Date(),
+          character: { name: '', avatar: '/user.webp' },
+          freeGuru: 3,
+          tapValue: { level: 1, value: 1 },
+          level: { id: 1, name: "Bronze", imgUrl: "/bronze.webp" },
+          selectedExchange: { id: 'selectex', icon: '/exchange.svg', name: 'Choose exchange' },
+          energy: 500,
+          battery: { level: 1, energy: 500 },
+          refereeId: referrerId || null,
+          referrals: []
+        };
 
-        if (referrerDoc.exists()) {
-          await updateDoc(referrerRef, {
-            balance: increment(100) // Ajoutez 100KTAP au créateur du lien
-          });
+        await setDoc(userRef, userData);
+        setEnergy(500);
+        setFreeGuru(userData.freeGuru);
+        setSelectedCharacter(userData.character)
+        setFullName(fullNamed)
+        setCharacterMenu(true);
+        setSelectedExchange({ id: 'selectex', name: 'Choose exchange', icon: '/exchange.svg' });
+        setId(userId.toString());
+
+        if (referrerId) {
+          const referrerRef = doc(db, 'telegramUsers', referrerId);
+          const referrerDoc = await getDoc(referrerRef);
+          if (referrerDoc.exists()) {
+            await updateDoc(referrerRef, {
+              referrals: arrayUnion({
+                userId: userId.toString(),
+                username: finalUsername,
+                balance: 0,
+                level: { id: 1, name: "Bronze", imgUrl: "/bronze.webp" },
+              })
+            });
+          }
         }
+        setInitialized(true);
+        fetchData(userId.toString());
       } catch (error) {
-        console.error("Erreur lors de la mise à jour des données utilisateur :", error);
+        console.error('Error saving user in Firestore:', error);
       }
     }
   };
@@ -647,6 +677,8 @@ export const UserProvider = ({ children }) => {
 
     fetchUserData();
   }, [id, telegramUser]);
+
+
 
 
   const checkAndUpdateFreeGuru = async () => {
