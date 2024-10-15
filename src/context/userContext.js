@@ -529,6 +529,9 @@ export const UserProvider = ({ children }) => {
         const referralsCount = userData.referrals.length; // Nombre de parrainages de l'utilisateur
         const reward = friendsRewards.find(reward => referralsCount >= reward.referralsRequired);
   
+        // Montant fixe à attribuer à l'utilisateur parrainé
+        const fixedBonus = 10000; // Ajustez ce montant selon vos besoins
+  
         if (reward) {
           const newBalance = userData.balance + reward.bonusAward; // Montant de la récompense
           try {
@@ -542,6 +545,17 @@ export const UserProvider = ({ children }) => {
           }
         } else {
           console.log('L\'utilisateur n\'a pas atteint le nombre de parrainages requis pour une récompense.');
+        }
+  
+        // Mise à jour du solde de l'utilisateur parrainé avec le gain fixe
+        const newUserBalance = userData.balance + fixedBonus;
+        try {
+          await updateDoc(userRef, {
+            balance: newUserBalance,
+          });
+          console.log('Gain fixe attribué à l\'utilisateur parrainé avec succès.');
+        } catch (error) {
+          console.error('Erreur lors de l\'attribution du gain fixe à l\'utilisateur parrainé:', error);
         }
       } else {
         console.log('L\'utilisateur a déjà réclamé cette récompense.');
