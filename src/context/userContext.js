@@ -483,20 +483,20 @@ export const UserProvider = ({ children }) => {
     }
   };
 
-  // const updateEnergy = async (userRef, batteryValue) => {
-  //   const savedEndTime = localStorage.getItem('endTime');
-  //   const savedEnergy = localStorage.getItem('energy');
-  //   const endTime = new Date(savedEndTime);
-  //   const newTimeLeft = endTime - new Date();
-  //   if (newTimeLeft < 0 && savedEnergy <= 0) {
-  //     try {
-  //       await updateDoc(userRef, { energy: batteryValue });
-  //       setEnergy(batteryValue);
-  //     } catch (error) {
-  //       console.error('Error updating energy:', error);
-  //     }
-  //   }
-  // };
+  const updateEnergy = async (userRef, batteryValue) => {
+    const savedEndTime = localStorage.getItem('endTime');
+    const savedEnergy = localStorage.getItem('energy');
+    const endTime = new Date(savedEndTime);
+    const newTimeLeft = endTime - new Date();
+    if (newTimeLeft < 0 && savedEnergy <= 0) {
+      try {
+        await updateDoc(userRef, { energy: batteryValue });
+        setEnergy(batteryValue);
+      } catch (error) {
+        console.error('Error updating energy:', error);
+      }
+    }
+  };
 
   const updateActiveTime = async (userRef) => {
 
@@ -541,36 +541,36 @@ export const UserProvider = ({ children }) => {
   };
 
 
-  // const updateReferrals = async (userRef) => {
-  //   const userDoc = await getDoc(userRef);
-  //   const userData = userDoc.data();
-  //   const referrals = userData.referrals || [];
+  const updateReferrals = async (userRef) => {
+    const userDoc = await getDoc(userRef);
+    const userData = userDoc.data();
+    const referrals = userData.referrals || [];
 
-  //   const updatedReferrals = await Promise.all(referrals.map(async (referral) => {
-  //     const referralRef = doc(db, 'telegramUsers', referral.userId);
-  //     const referralDoc = await getDoc(referralRef);
-  //     if (referralDoc.exists()) {
-  //       const referralData = referralDoc.data();
-  //       return {
-  //         ...referral,
-  //         balance: referralData.balance,
-  //         level: referralData.level,
-  //       };
-  //     }
-  //     return referral;
-  //   }));
+    const updatedReferrals = await Promise.all(referrals.map(async (referral) => {
+      const referralRef = doc(db, 'telegramUsers', referral.userId);
+      const referralDoc = await getDoc(referralRef);
+      if (referralDoc.exists()) {
+        const referralData = referralDoc.data();
+        return {
+          ...referral,
+          balance: referralData.balance,
+          level: referralData.level,
+        };
+      }
+      return referral;
+    }));
 
-  //   await updateDoc(userRef, { referrals: updatedReferrals });
+    await updateDoc(userRef, { referrals: updatedReferrals });
 
-  //   const totalEarnings = updatedReferrals.reduce((acc, curr) => acc + curr.balance, 0);
-  //   const refBonus = Math.floor(totalEarnings * 0.1);
-  //   const totalBalance = `${balance}` + refBonus;
-  //   try {
-  //     await updateDoc(userRef, { refBonus, totalBalance, lastActive: new Date() });
-  //   } catch (error) {
-  //     console.error('Error updating referrer bonus:', error);
-  //   }
-  // };
+    const totalEarnings = updatedReferrals.reduce((acc, curr) => acc + curr.balance, 0);
+    const refBonus = Math.floor(totalEarnings * 0.1);
+    const totalBalance = `${balance}` + refBonus;
+    try {
+      await updateDoc(userRef, { refBonus, totalBalance, lastActive: new Date() });
+    } catch (error) {
+      console.error('Error updating referrer bonus:', error);
+    }
+  };
 
   const updateUserLevel = async (userId, newTapBalance) => {
     let newLevel = { id: 1, name: "Bronze", imgUrl: "/bronze.webp" };
