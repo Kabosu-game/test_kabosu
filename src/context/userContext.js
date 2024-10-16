@@ -11,18 +11,18 @@ export const useUser = () => useContext(UserContext);
 
 
 const userLevelss = [
-  { id: 1, name: 'Bronze', icon: '/bronze.webp', tapBalanceRequired: 1000 },
-  { id: 2, name: 'Silver', icon: '/silver.webp', tapBalanceRequired: 50000 },
-  { id: 3, name: 'Gold', icon: '/gold.webp', tapBalanceRequired: 500000 },
-  { id: 4, name: 'Platinum', icon: '/platinum.webp', tapBalanceRequired: 1000000 },
-  { id: 5, name: 'Diamond', icon: '/diamond.webp', tapBalanceRequired: 2500000 },
-  { id: 6, name: 'Master', icon: '/master.webp', tapBalanceRequired: 5000000 },
+  { id: 1, name: 'Bronze', icon: '/bronze.png', tapBalanceRequired: 1000000 },
+  { id: 2, name: 'Silver', icon: '/silver.png', tapBalanceRequired: 10000000 },
+  { id: 3, name: 'Gold', icon: '/gold.png', tapBalanceRequired: 100000000 },
+  { id: 4, name: 'Platinum', icon: '/platinum.png', tapBalanceRequired: 1000000000 },
+  { id: 5, name: 'Diamond', icon: '/diamond.png', tapBalanceRequired: 2500000000 },
+  { id: 6, name: 'Master', icon: '/master.png', tapBalanceRequired: 10000000000 },
 ];
 
 
 const prTeam = [
   {
-    title: 'Patience',
+    title: 'WUUW DRC20',
     level: [
       { level: 1, profit: 100, cost: 1000 },
       { level: 2, profit: 200, cost: 5000 },
@@ -30,11 +30,11 @@ const prTeam = [
       { level: 4, profit: 400, cost: 21000 },
     ],
     totalProfit: 0,
-    icon: '/patience.webp',
+    icon: '/wwuw.png',
     description: 'Develop the patience needed to navigate volatile markets, making informed decisions that lead to long-term trading success.'
   },
   {
-    title: 'Discipline',
+    title: 'PUMP DRC20',
     level: [
       { level: 1, profit: 100, cost: 1000 },
       { level: 2, profit: 200, cost: 5000 },
@@ -42,12 +42,12 @@ const prTeam = [
       { level: 4, profit: 400, cost: 100000 },
     ],
     totalProfit: 0,
-    icon: '/discipline.webp',
+    icon: '/pump.png',
     description: 'Cultivate the discipline to stick to your trading strategy, minimizing risks and maximizing consistent returns over time.'
 
   },
   {
-    title: 'Adaptability',
+    title: 'DGDG DRC20',
     level: [
       { level: 1, profit: 240, cost: 2000 },
       { level: 2, profit: 480, cost: 10000 },
@@ -55,11 +55,11 @@ const prTeam = [
       { level: 4, profit: 1264, cost: 400000 },
     ],
     totalProfit: 0,
-    icon: '/adaptability.webp',
+    icon: '/dgdg.png',
     description: 'Enhance your ability to adapt to market changes, ensuring your trading strategy remains effective in fluctuating conditions.'
   },
   {
-    title: 'Awareness',
+    title: 'IPWT DRC20',
     level: [
       { level: 1, profit: 70, cost: 750 },
       { level: 2, profit: 140, cost: 1400 },
@@ -67,11 +67,11 @@ const prTeam = [
       { level: 4, profit: 560, cost: 10000 },
     ],
     totalProfit: 0,
-    icon: '/awareness.webp',
+    icon: '/ipwt.png',
     description: 'Increase your market awareness, enabling you to anticipate trends and make informed trading decisions with confidence.'
   },
   {
-    title: 'Technical Analysis',
+    title: 'LTDG DRC20',
     level: [
       { level: 1, profit: 75, cost: 550 },
       { level: 2, profit: 140, cost: 1000 },
@@ -79,11 +79,11 @@ const prTeam = [
       { level: 4, profit: 400, cost: 8000 },
     ],
     totalProfit: 0,
-    icon: '/analysis.webp',
+    icon: '/ltdg.png',
     description: 'Master technical analysis to predict market movements and make data-driven trading decisions with greater precision.'
   },
   {
-    title: 'Networking',
+    title: 'DNLD DRC20',
     level: [
       { level: 1, profit: 90, cost: 1000 },
       { level: 2, profit: 180, cost: 4000 },
@@ -91,7 +91,19 @@ const prTeam = [
       { level: 4, profit: 720, cost: 24000 },
     ],
     totalProfit: 0,
-    icon: '/networking.webp',
+    icon: '/dnld.png',
+    description: 'Build a strong network within the crypto community, gaining insights and opportunities to enhance your trading performance.'
+  },
+  {
+    title: 'WUFI DRC20',
+    level: [
+      { level: 1, profit: 90, cost: 1000 },
+      { level: 2, profit: 180, cost: 4000 },
+      { level: 3, profit: 360, cost: 12000 },
+      { level: 4, profit: 720, cost: 24000 },
+    ],
+    totalProfit: 0,
+    icon: '/wufi.png',
     description: 'Build a strong network within the crypto community, gaining insights and opportunities to enhance your trading performance.'
   },
 ]

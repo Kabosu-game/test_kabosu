@@ -15,8 +15,6 @@ const Business = () => {
     const infoRefTwo = useRef(null);
     const [openClaim, setOpenClaim] =  useState(false);
 
-
-
     const handleClickOutside = (event) => {
         if (infoRefTwo.current && !infoRefTwo.current.contains(event.target)) {
           setOpenUpgrade(false);

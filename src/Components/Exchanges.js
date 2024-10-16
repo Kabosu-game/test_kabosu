@@ -18,8 +18,8 @@ const exchangesList =[
         id: "bybit",
     },
     {
-        name: "MEXC vendor",
-        icon: "/mexc.webp",
+        name: "Winance vendor",
+        icon: "/winance.png",
         id: "mexc",
     },
     {
@@ -111,7 +111,7 @@ const Exchanges = ({ showExchange, setShowExchange }) => {
 
   return (
     <>
-      {showExchange && (
+=      {showExchange && (
         <div className="fixed left-0 right-0 z-20 top-[-12px] bottom-0 flex justify-center taskbg px-[16px] h-full">
 
           <div id="refer" className='w-full flex flex-col'>

@@ -343,6 +343,7 @@ const GoldHunters = () => {
       );
     }, 1000); // Match this duration with the animation duration
   };
+
   const handleClickGuru = (e) => {
     triggerHapticFeedback();
 
@@ -663,8 +664,6 @@ const GoldHunters = () => {
                 </h1>
 
               </div>
-
-
 
             </div>
 

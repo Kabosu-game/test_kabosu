@@ -337,7 +337,7 @@ const Wallet = () => {
 
 
         )}
-              <SwapComponent openSwapModal={openSwapModal} setOpenSwapModal={setOpenSwapModal}/>
+              {/* <SwapComponent openSwapModal={openSwapModal} setOpenSwapModal={setOpenSwapModal}/> */}
 
       </Animate>
 
