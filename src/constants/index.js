@@ -10,7 +10,7 @@ export const images = {
   };
 
   export const urls = {
-    appUrl: "https://maxitap.netlify.app",
+    appUrl: "https://kabosutapgame.netlify.app/",
     botUsername: "KabosuTapGame_bot",
   }
 
