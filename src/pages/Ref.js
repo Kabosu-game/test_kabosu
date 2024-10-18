@@ -18,7 +18,7 @@ const Ref = () => {
 
   const copyToClipboard = () => {
     // eslint-disable-next-line
-    const reflink = `https://t.me/${urls.botUsername}?start=r${id}\n\MAX tokens mining is live! Two is better than one!  Join my squad, and let\'s double the fun (and earnings 🤑)! MAX Power Tap! 🚀`;
+    const reflink = `https://t.me/${urls.botUsername}?start=r${id}\n\Kabosu Tap Game tokens mining is live! Two is better than one!  Join my squad, and let\'s double the fun (and earnings 🤑)! Doginals to the Moon 🚀`;
 
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard
