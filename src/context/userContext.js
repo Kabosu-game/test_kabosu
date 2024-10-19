@@ -133,7 +133,7 @@ const prTeam = [
 ]
 const marketTeam = [
   {
-    title: 'WE ROBOT',
+    title: 'WATCHDOG',
     level: [
       { level: 1, profit: 100, cost: 1000 },
       { level: 2, profit: 200, cost: 5000 },
@@ -141,11 +141,11 @@ const marketTeam = [
       { level: 4, profit: 400, cost: 21000 },
     ],
     totalProfit: 0,
-    icon: '/WE ROBOT.jpeg',
-    description: 'The future of autonomy and artificial intelligence will be realized through the creation of a fleet of autonomous vehicles and robots.'
+    icon: '/WATCHDOG.png',
+    description: 'Watchdog in the doginals drc20 ecosystem to fight against fraudulent projects.'
   },
   {
-    title: 'GRAYSCALE',
+    title: 'WINANCE PAY',
     level: [
       { level: 1, profit: 100, cost: 1000 },
       { level: 2, profit: 200, cost: 5000 },
@@ -153,12 +153,12 @@ const marketTeam = [
       { level: 4, profit: 400, cost: 100000 },
     ],
     totalProfit: 0,
-    icon: '/GRAYSCALE.jpeg',
-    description: '⚡️LATEST: Grayscale puts $DOGE, Worldcoin on list of 35 potential crypto products'
+    icon: '/WINANCE PAY.jpg',
+    description: 'Platform crypto purchase and selling platform with fiat by mobile means and virtual money'
 
   },
   {
-    title: 'DOGEFATHER',
+    title: 'KTAP COIN',
     level: [
       { level: 1, profit: 240, cost: 2000 },
       { level: 2, profit: 480, cost: 10000 },
@@ -166,11 +166,11 @@ const marketTeam = [
       { level: 4, profit: 1264, cost: 400000 },
     ],
     totalProfit: 0,
-    icon: '/DOGEFATHER.jpeg',
-    description: 'Elon Musk is often referred to as the "Doge Father" due to his influential role in popularizing Dogecoin'
+    icon: '/KTAP COIN.png',
+    description: 'Kabosu Tap ( Ktap ), the doginals drc20 token to receive at the end of the Ktap game.'
   },
   {
-    title: 'SATOSHI NAKAMOTO',
+    title: 'MY DOGE',
     level: [
       { level: 1, profit: 70, cost: 750 },
       { level: 2, profit: 140, cost: 1400 },
@@ -178,11 +178,11 @@ const marketTeam = [
       { level: 4, profit: 560, cost: 10000 },
     ],
     totalProfit: 0,
-    icon: '/SATOSHI NAKAMOTO.jpeg',
-    description: 'If you don\'t believe it or don\'t understand it, I don\'t have time to try to convince you, sorry.'
+    icon: '/my doge.png',
+    description: 'Dogecoin\'s first wallet, Will soon support doginals in mobile version and is already organizing giveaways with certain doginal projects.'
   },
-  /*{
-    title: 'Risk management',
+  {
+    title: 'DOGGY MARKET',
     level: [
       { level: 1, profit: 75, cost: 550 },
       { level: 2, profit: 140, cost: 1000 },
@@ -190,11 +190,11 @@ const marketTeam = [
       { level: 4, profit: 400, cost: 8000 },
     ],
     totalProfit: 0,
-    icon: '/risks.webp',
-    description: 'Develop strategies to mitigate risks, protecting your investments while navigating the unpredictable crypto market.'
+    icon: '/dogy maret.png',
+    description: 'First doginals market to exchange NFT card and drc20 token to the public'
   },
   {
-    title: 'Strategic planning',
+    title: 'MINI DOGE',
     level: [
       { level: 1, profit: 90, cost: 1000 },
       { level: 2, profit: 180, cost: 4000 },
@@ -202,47 +202,47 @@ const marketTeam = [
       { level: 4, profit: 720, cost: 24000 },
     ],
     totalProfit: 0,
-    icon: '/planning.webp',
-    description: 'Craft and execute plans that capitalize on market opportunities, positioning your assets for long-term success.'
-  },*/
+    icon: '/minigode.png',
+    description: 'One of the very first NFTs on Dogecoin and working on an adventure game for shibes.'
+  },
 ]
 
 
 const specialCards = [
   {
-    title: 'Airdrop Hunter',
+    title: 'WE ROBOT',
     profit: 10,
     cost: '500000000',
-    icon: '/hunter.webp',
+    icon: '/WE ROBOT.jpeg',
     tagline: 'Withdrawal access',
-    description: 'This is a special card that gives you special access benefits to some of the wallet features on Maxitap',
+    description: 'The future of autonomy and artificial intelligence will be realized through the creation of a fleet of autonomous vehicles and robots.',
     class: 'specials1',
   },
   {
-    title: 'Early Access',
+    title: 'GRAYSCALE',
     profit: 5,
     cost: '100000000',
-    icon: '/access.webp',
+    icon: '/GRAYSCALE.jpeg',
     tagline: 'Withdrawal access',
-    description: 'With this special card you will stand high airdrop qualification chances and be among early token holders.',
+    description: '⚡️LATEST: Grayscale puts $DOGE, Worldcoin on list of 35 potential crypto products',
     class: 'specials2',
   },
   {
-    title: 'Balance Booster',
+    title: 'DOGEFATHER',
     profit: 50,
     cost: '1000000000',
-    icon: '/booster.webp',
+    icon: '/DOGEFATHER.jpeg',
     tagline: 'Get more tokens',
-    description: 'Get special access to boost your total balance in the boosters section, never a dull moment!',
+    description: 'Elon Musk is often referred to as the "Doge Father" due to his influential role in popularizing Dogecoin',
     class: 'specials3',
   },
   {
-    title: 'Token Swap Access',
+    title: 'SATOSHI NAKAMOTO',
     profit: 5,
     cost: '200000000',
-    icon: '/swap.webp',
+    icon: '/SATOSHI NAKAMOTO.jpeg',
     tagline: 'Swap tokens special',
-    description: 'This special card gives you access to token swap and withdrawal features in your wallet section.',
+    description: 'If you don\'t believe it or don\'t understand it, I don\'t have time to try to convince you, sorry.',
     class: 'specials4',
   },
 ]
