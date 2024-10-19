@@ -106,6 +106,30 @@ const prTeam = [
     icon: '/wufi.png',
     description: 'First Dex on DRC20 & Doge Building DogFi | 10 000 000 Max Supply | Website : bento.me/wufiswap'
   },
+  {
+    title: 'ARMZ DRC20',
+    level: [
+      { level: 1, profit: 90, cost: 1000 },
+      { level: 2, profit: 180, cost: 4000 },
+      { level: 3, profit: 360, cost: 12000 },
+      { level: 4, profit: 720, cost: 24000 },
+    ],
+    totalProfit: 0,
+    icon: '/ARMZ DRC20.jpg',
+    description: 'The Bank Of Armz | NFT Bank Notes l DRC 20 Airdrop Tool | 3 130 000  Max Supply | Website : bankofarmz.com'
+  },
+  {
+    title: 'OBOB DRC20',
+    level: [
+      { level: 1, profit: 90, cost: 1000 },
+      { level: 2, profit: 180, cost: 4000 },
+      { level: 3, profit: 360, cost: 12000 },
+      { level: 4, profit: 720, cost: 24000 },
+    ],
+    totalProfit: 0,
+    icon: '/OBOB DRC20.png',
+    description: '21,000,000 Green Frog called OBOB traveling on the Dogecoin blockchain.'
+  },
 ]
 const marketTeam = [
   {
