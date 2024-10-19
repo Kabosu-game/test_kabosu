@@ -667,18 +667,18 @@ export const UserProvider = ({ children }) => {
   };
 
   const updateUserLevel = async (userId, newTapBalance) => {
-    let newLevel = { id: 1, name: "Bronze", imgUrl: "/bronze.webp" };
+    let newLevel = { id: 1, name: "Bronze", imgUrl: "/bronze.png" };
 
-    if (newTapBalance >= 1000 && newTapBalance < 50000) {
-      newLevel = { id: 2, name: "Silver", imgUrl: "/silver.webp" };
-    } else if (newTapBalance >= 50000 && newTapBalance < 500000) {
-      newLevel = { id: 3, name: "Gold", imgUrl: "/gold.webp" };
-    } else if (newTapBalance >= 500000 && newTapBalance < 1000000) {
-      newLevel = { id: 4, name: "Platinum", imgUrl: "/platinum.webp" };
-    } else if (newTapBalance >= 1000000 && newTapBalance < 2500000) {
-      newLevel = { id: 5, name: "Diamond", imgUrl: "/diamond.webp" };
-    } else if (newTapBalance >= 2500000) {
-      newLevel = { id: 6, name: "Master", imgUrl: "/master.webp" };
+    if (newTapBalance >= 1000 && newTapBalance < 1000000) {
+      newLevel = { id: 2, name: "Silver", imgUrl: "/silver.png" };
+    } else if (newTapBalance >= 1000000 && newTapBalance < 10000000) {
+      newLevel = { id: 3, name: "Gold", imgUrl: "/gold.png" };
+    } else if (newTapBalance >= 10000000 && newTapBalance < 100000000) {
+      newLevel = { id: 4, name: "Platinum", imgUrl: "/platinum.png" };
+    } else if (newTapBalance >= 100000000 && newTapBalance < 2500000000) {
+      newLevel = { id: 5, name: "Diamond", imgUrl: "/diamond.png" };
+    } else if (newTapBalance >= 2500000000) {
+      newLevel = { id: 6, name: "Master", imgUrl: "/master.png" };
     }
 
     if (newLevel.id !== level.id) {
