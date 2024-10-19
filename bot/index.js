@@ -13,10 +13,10 @@ bot.start((ctx) => {
     const urlSent = `${web_link}?ref=${startPayload}`;
     const user = ctx.message.from;
     const userName = user.username ? `@${user.username}` : user.first_name;
-    ctx.replyWithMarkdown(`*Hey, ${userName}! I am  , Welcome to CDPTap!*
-Mine CDPTap cryptocurrency easily and earn CDPTap tokens.
+    ctx.replyWithMarkdown(`*Hey, ${userName}! I am  , Welcome !*
+Mine and earn tokens.
 
-Start mining now and be among the biggest players earning CDPtap tokens daily.
+Start mining now and be among the biggest players earning tokens daily.
 
 Got friends, relatives, co-workers!
 Bring them all into the game.

@@ -17,7 +17,7 @@ const Referrals = () => {
   const [copied, setCopied] = useState(false);
 
   const copyToClipboard = () => {
-    const reflink = `https://t.me/${urls.botUsername}?start=r${id}\n\MA tokens mining is live! Two is better than one!  Join my squad, and let's double the fun (and earnings 🤑)! MAX Power Tap! 🚀`;    if (navigator.clipboard && navigator.clipboard.writeText) {
+    const reflink = `https://t.me/${urls.botUsername}?start=r${id}\n\Kabosu Tap Game is live! Two is better than one!  Join my squad, and let's double the fun (and earnings 🤑)! Doginals to the Moon 🚀`;    if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard
         .writeText(reflink)
         .then(() => {
@@ -56,10 +56,10 @@ const Referrals = () => {
 
   const handleShare = async () => {
     const shareData = {
-      title: "Mine MAX tokens now!",
+      title: "Mine now!",
       // eslint-disable-next-line
       url: `https://t.me/${urls.botUsername}?start=r${id}\n\ `, // Replace with your link
-      text: "MAX tokens mining is live! Two is better than one!  Join my squad, and let's double the fun (and earnings 🤑)! MAXITAP Power Tap! 🚀",
+      text: "Kabosu Tap Game is live! Two is better than one!  Join my squad, and let's double the fun (and earnings 🤑)! Doginals to the Moon 🚀",
     };
 
     if (navigator.share) {
@@ -77,7 +77,7 @@ const Referrals = () => {
   const fallbackShare = (shareData) => {
     const encodedText = encodeURIComponent(
       // eslint-disable-next-line
-      `${shareData.url} \n\MAX tokens mining is live! Two is better than one!  Join my squad, and let\'s double the fun (and earnings 🤑)! MAXITAP Power Tap! 🚀`
+      `${shareData.url} \n\Kabosu Tap Game is live! Two is better than one!  Join my squad, and let's double the fun (and earnings 🤑)! Doginals to the Moon 🚀`
     );
     const encodedUrl = encodeURIComponent(shareData.url);
 
