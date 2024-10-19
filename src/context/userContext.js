@@ -109,7 +109,7 @@ const prTeam = [
 ]
 const marketTeam = [
   {
-    title: 'Leadership',
+    title: 'WE ROBOT',
     level: [
       { level: 1, profit: 100, cost: 1000 },
       { level: 2, profit: 200, cost: 5000 },
@@ -117,11 +117,11 @@ const marketTeam = [
       { level: 4, profit: 400, cost: 21000 },
     ],
     totalProfit: 0,
-    icon: '/leadership.webp',
-    description: 'Guide your team in the crypto space, making strategic decisions that drive growth and secure exclusive market advantages.'
+    icon: '/WE ROBOT.jpeg',
+    description: 'The future of autonomy and artificial intelligence will be realized through the creation of a fleet of autonomous vehicles and robots.'
   },
   {
-    title: 'Communication',
+    title: 'GRAYSCALE',
     level: [
       { level: 1, profit: 100, cost: 1000 },
       { level: 2, profit: 200, cost: 5000 },
@@ -129,12 +129,12 @@ const marketTeam = [
       { level: 4, profit: 400, cost: 100000 },
     ],
     totalProfit: 0,
-    icon: '/communication.webp',
-    description: 'Master communication to effectively negotiate crypto trades, ensuring clarity and success in high-stakes market transactions.'
+    icon: '/GRAYSCALE.jpeg',
+    description: '⚡️LATEST: Grayscale puts $DOGE, Worldcoin on list of 35 potential crypto products'
 
   },
   {
-    title: 'Negotiation',
+    title: 'DOGEFATHER',
     level: [
       { level: 1, profit: 240, cost: 2000 },
       { level: 2, profit: 480, cost: 10000 },
@@ -142,11 +142,11 @@ const marketTeam = [
       { level: 4, profit: 1264, cost: 400000 },
     ],
     totalProfit: 0,
-    icon: '/negotiation.webp',
-    description: 'Sharpen your negotiation skills to secure favorable trading terms and maximize profits in competitive cryptocurrency markets.'
+    icon: '/DOGEFATHER.jpeg',
+    description: 'Elon Musk is often referred to as the "Doge Father" due to his influential role in popularizing Dogecoin'
   },
   {
-    title: 'Financial management',
+    title: 'SATOSHI NAKAMOTO',
     level: [
       { level: 1, profit: 70, cost: 750 },
       { level: 2, profit: 140, cost: 1400 },
@@ -154,10 +154,10 @@ const marketTeam = [
       { level: 4, profit: 560, cost: 10000 },
     ],
     totalProfit: 0,
-    icon: '/finance.webp',
-    description: 'Optimize your portfolio by managing assets effectively, ensuring sustainable growth in the volatile cryptocurrency landscape.'
+    icon: '/SATOSHI NAKAMOTO.jpeg',
+    description: 'If you don\'t believe it or don\'t understand it, I don\'t have time to try to convince you, sorry.'
   },
-  {
+  /*{
     title: 'Risk management',
     level: [
       { level: 1, profit: 75, cost: 550 },
@@ -180,7 +180,7 @@ const marketTeam = [
     totalProfit: 0,
     icon: '/planning.webp',
     description: 'Craft and execute plans that capitalize on market opportunities, positioning your assets for long-term success.'
-  },
+  },*/
 ]
 
 
@@ -276,7 +276,7 @@ const specialCards = [
 export const UserProvider = ({ children }) => {
   const [balance, setBalance] = useState(0);
   const [tapBalance, setTapBalance] = useState(0);
-  const [level, setLevel] = useState({ id: 1, name: "Bronze", imgUrl: "/bronze.webp" });
+  const [level, setLevel] = useState({ id: 1, name: "Bronze", imgUrl: "/bronze.png" });
   const [tapValue, setTapValue] = useState({ level: 1, value: 1 });
   const [id, setId] = useState("");
   const [loading, setLoading] = useState(true);
