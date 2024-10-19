@@ -6,12 +6,12 @@ import { IoCheckmarkCircleSharp } from 'react-icons/io5';
 import { texts } from '../constants';
 
 const milestones = [
-  { name: 'Bronze', icon: '/bronze.webp', tapBalanceRequired: 1000, reward: 50000 },
-  { name: 'Silver', icon: '/silver.webp', tapBalanceRequired: 50000, reward: 100000 },
-  { name: 'Gold', icon: '/gold.webp', tapBalanceRequired: 500000, reward: 250000 },
-  { name: 'Platinum', icon: '/platinum.webp', tapBalanceRequired: 1000000, reward: 500000 },
-  { name: 'Diamond', icon: '/diamond.webp', tapBalanceRequired: 2500000, reward: 1000000 },
-  { name: 'Master', icon: '/master.webp', tapBalanceRequired: 5000000, reward: 2500000 },
+  { name: 'Bronze', icon: '/bronze.png', tapBalanceRequired: 1000, reward: 1000000  },
+  { name: 'Silver', icon: '/silver.png', tapBalanceRequired: 1000000, reward: 10000000 },
+  { name: 'Gold', icon: '/gold.png', tapBalanceRequired: 10000000, reward: 100000000 },
+  { name: 'Platinum', icon: '/platinum.png', tapBalanceRequired: 100000000, reward: 1000000000 },
+  { name: 'Diamond', icon: '/diamond.png', tapBalanceRequired: 1000000000, reward: 2500000000 },
+  { name: 'Master', icon: '/master.png', tapBalanceRequired: 2500000000, reward: 10000000000 },
 ];
 
 const MilestoneRewards = () => {

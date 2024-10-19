@@ -14,12 +14,12 @@ import { texts } from "../constants";
 
 
 const userLevels = [
-    { id: 1, name: 'Bronze', icon: '/bronze.webp', tapBalanceRequired: 1000 },
-    { id: 2, name: 'Silver', icon: '/silver.webp', tapBalanceRequired: 50000 },
-    { id: 3, name: 'Gold', icon: '/gold.webp', tapBalanceRequired: 500000 },
-    { id: 4, name: 'Platinum', icon: '/platinum.webp', tapBalanceRequired: 1000000 },
-    { id: 5, name: 'Diamond', icon: '/diamond.webp', tapBalanceRequired: 2500000 },
-    { id: 6, name: 'Master', icon: '/master.webp', tapBalanceRequired: 5000000 },
+    { id: 1, name: 'Bronze', icon: '/bronze.png', tapBalanceRequired: 1000000 },
+    { id: 2, name: 'Silver', icon: '/silver.png', tapBalanceRequired: 10000000 },
+    { id: 3, name: 'Gold', icon: '/gold.png', tapBalanceRequired: 100000000 },
+    { id: 4, name: 'Platinum', icon: '/platinum.png', tapBalanceRequired: 1000000000 },
+    { id: 5, name: 'Diamond', icon: '/diamond.png', tapBalanceRequired: 2500000000 },
+    { id: 6, name: 'Master', icon: '/master.png', tapBalanceRequired: 10000000000 },
   ];
 
   
