@@ -31,10 +31,10 @@ const prTeam = [
     ],
     totalProfit: 0,
     icon: '/wwuw.png',
-    description: 'Develop the patience needed to navigate volatile markets, making informed decisions that lead to long-term trading success.'
+    description: 'Be Part of the pioneers of Drc20 ecosytem on Dogecoin | 21 000 000 Max Supply | Website : https://linktr.ee/WinanceExchange'
   },
   {
-    title: 'PUMP DRC2',
+    title: 'PUMP DRC20',
     level: [
       { level: 1, profit: 100, cost: 1000 },
       { level: 2, profit: 200, cost: 5000 },
@@ -43,7 +43,7 @@ const prTeam = [
     ],
     totalProfit: 0,
     icon: '/pump.png',
-    description: 'Cultivate the discipline to stick to your trading strategy, minimizing risks and maximizing consistent returns over time.'
+    description: 'PUMP DRC20, soon nft collection with great utility ( Dogecoin mining ) | 1 000 000 Max Supply | Website : drc20pump.com'
 
   },
   {
@@ -56,7 +56,7 @@ const prTeam = [
     ],
     totalProfit: 0,
     icon: '/dgdg.png',
-    description: 'Enhance your ability to adapt to market changes, ensuring your trading strategy remains effective in fluctuating conditions.'
+    description: '[ $DOGE + $DOGI = $DGDG ], Total supply : 21,000,000,000,000,000 | Website : dogidogi.dog'
   },
   {
     title: 'IPWT DRC20',
@@ -68,7 +68,7 @@ const prTeam = [
     ],
     totalProfit: 0,
     icon: '/ipwt.png',
-    description: 'Increase your market awareness, enabling you to anticipate trends and make informed trading decisions with confidence.'
+    description: 'Trust Pepe ideology , In Pepe We Trust. | 20 000 000 Max Supply | Website : hub.xyz/ipwt'
   },
   {
     title: 'LTDG DRC20',
@@ -80,7 +80,7 @@ const prTeam = [
     ],
     totalProfit: 0,
     icon: '/ltdg.png',
-    description: 'Master technical analysis to predict market movements and make data-driven trading decisions with greater precision.'
+    description: 'We Learn, WE Build, We Educate a resource for Doing Only Good Everyday | 8 400 000 Max Supply | Website : litedogedrc.dog'
   },
   {
     title: 'DNLD DRC20',
@@ -92,7 +92,7 @@ const prTeam = [
     ],
     totalProfit: 0,
     icon: '/dnld.png',
-    description: 'Build a strong network within the crypto community, gaining insights and opportunities to enhance your trading performance.'
+    description: 'The Leading Trump Token on Doge | 11 052 024 | Website : doginaldtrump.com'
   },
   {
     title: 'WUFI DRC20',
@@ -104,7 +104,7 @@ const prTeam = [
     ],
     totalProfit: 0,
     icon: '/wufi.png',
-    description: 'Build a strong network within the crypto community, gaining insights and opportunities to enhance your trading performance.'
+    description: 'First Dex on DRC20 & Doge Building DogFi | 10 000 000 Max Supply | Website : bento.me/wufiswap'
   },
 ]
 const marketTeam = [
