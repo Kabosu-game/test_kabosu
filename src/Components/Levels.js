@@ -3,12 +3,12 @@ import { useUser } from '../context/userContext';
 import { MdOutlineKeyboardArrowLeft, MdOutlineKeyboardArrowRight } from 'react-icons/md';
 
 const userLevels = [
-  { name: 'Bronze', icon: '/bronze.webp', tapBalanceRequired: 1000 },
-  { name: 'Silver', icon: '/silver.webp', tapBalanceRequired: 50000 },
-  { name: 'Gold', icon: '/gold.webp', tapBalanceRequired: 500000 },
-  { name: 'Platinum', icon: '/platinum.webp', tapBalanceRequired: 1000000 },
-  { name: 'Diamond', icon: '/diamond.webp', tapBalanceRequired: 2500000 },
-  { name: 'Master', icon: '/master.webp', tapBalanceRequired: 5000000 },
+  { name: 'Bronze', icon: '/bronze.png', tapBalanceRequired: 1000000  },
+  { name: 'Silver', icon: '/silver.png', tapBalanceRequired: 10000000 },
+  { name: 'Gold', icon: '/gold.png', tapBalanceRequired: 100000000 },
+  { name: 'Platinum', icon: '/platinum.png', tapBalanceRequired: 1000000000 },
+  { name: 'Diamond', icon: '/diamond.png', tapBalanceRequired: 2500000000 },
+  { name: 'Master', icon: '/master.png', tapBalanceRequired: 10000000000 },
   // { name: 'Legend', icon: '/master.webp', tapBalanceRequired: 7000000 },
 ];
 
