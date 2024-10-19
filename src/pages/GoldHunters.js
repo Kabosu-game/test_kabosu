@@ -65,11 +65,11 @@ const Container = styled.div`
 const characters = [
   {
     name: 'boy',
-    avatar: '/boy.webp'
+    avatar: '/men.jpeg'
   },
   {
     name: 'girl',
-    avatar: '/girl.webp'
+    avatar: '/wmen.jpeg'
   }
 ];
 
