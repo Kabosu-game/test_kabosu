@@ -191,7 +191,7 @@ const Wallet = () => {
                 <span className="font-bold text-[30px] leading-[0]">
                   {showBalance ? formatNumber(totalUSDTValue) : '******'}
                 </span>
-                <span className="text-[13px] mt-2">USDT</span>
+                <span className="text-[13px] mt-2">$</span>
               </h3>
               <span className="flex items-center space-x-1 text-[13px]">
                 <PiApproximateEquals size={10} className="" />
