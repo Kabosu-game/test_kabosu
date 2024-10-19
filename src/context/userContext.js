@@ -34,7 +34,7 @@ const prTeam = [
     description: 'Develop the patience needed to navigate volatile markets, making informed decisions that lead to long-term trading success.'
   },
   {
-    title: 'PUMP DRC20',
+    title: 'PUMP DRC2',
     level: [
       { level: 1, profit: 100, cost: 1000 },
       { level: 2, profit: 200, cost: 5000 },
