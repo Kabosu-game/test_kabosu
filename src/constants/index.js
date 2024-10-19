@@ -1,7 +1,7 @@
 export const images = {
     logo: '/loader.webp', // if using local images
     tapImage: "/ktaplogo.png",
-    loadingScreen: '/ktaplogo.png', // if using URLs
+    loadingScreen: '/', // if using URLs
   };
   
   export const texts = {
