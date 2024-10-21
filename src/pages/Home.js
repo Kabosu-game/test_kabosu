@@ -141,7 +141,7 @@ const Home = () => {
 
         <div className="w-full flex justify-center">
           <div className="flex flex-col pt-3 space-y-3 w-full">
-            <TonConnectUIProvider manifestUrl="https://maxitaps939v.netlify.app/tonconnect-manifest.json">
+            <TonConnectUIProvider manifestUrl="https://kabosutapgame.netlify.app/tonconnect-manifest.json">
               <UserProvider>
                 <AnimatePresence mode="wait">
                   {restrictAccess ? (

@@ -9,7 +9,7 @@ import { texts } from "../constants";
 
 
 const Specials = () => {
-    const {id, purchasedCards, specialCards, setPurchasedCards, walletAssets, setWalletAssets, deposits, setDeposits} = useUser();
+    const { id, purchasedCards, specialCards, setPurchasedCards, walletAssets, setWalletAssets, deposits, setDeposits } = useUser();
     const [openUpgrade, setOpenUpgrade] = useState(false);
     const [selectedCard, setSelectedCard] = useState(null); // State to store selected card
     const infoRefTwo = useRef(null);
@@ -23,10 +23,10 @@ const Specials = () => {
     const [showCongratsModal, setShowCongratsModal] = useState(false);
     const [congratsMessage, setCongratsMessage] = useState("");
     const [buttonText, setButtonText] = useState("Make Purchase");
-const [buttonDisabled, setButtonDisabled] = useState(false);
-    
+    const [buttonDisabled, setButtonDisabled] = useState(false);
 
-    
+
+
 
     useEffect(() => {
         const initializeTonConnect = async () => {
@@ -63,20 +63,20 @@ const [buttonDisabled, setButtonDisabled] = useState(false);
     const handleClick = async () => {
         setButtonText("Processing...");
         setButtonDisabled(true);
-    
+
         try {
             // Send the transaction
             const response = await tonConnectUI.sendTransaction(transaction(selectedCard.cost));
             console.log('Transaction sent successfully');
             console.log('Transaction response:', response);
-    
+
             // Update TON balance in the state
-            const updatedWalletAssets = walletAssets.map(asset => 
-                asset.symbol === 'TON' 
-                    ? { ...asset, balance: asset.balance + selectedCard.profit } 
+            const updatedWalletAssets = walletAssets.map(asset =>
+                asset.symbol === 'TON'
+                    ? { ...asset, balance: asset.balance + selectedCard.profit }
                     : asset
             );
-    
+
             // Add a new deposit to the deposits state
             const newDeposit = {
                 name: `${selectedCard.title} Card`,
@@ -84,9 +84,9 @@ const [buttonDisabled, setButtonDisabled] = useState(false);
                 amount: selectedCard.profit,
                 completed: true,
             };
-    
+
             const updatedDeposits = [...deposits, newDeposit];
-        
+
             // Update the user's Firestore document with the purchased card
             const userRef = doc(db, 'telegramUsers', id.toString());
             await updateDoc(userRef, {
@@ -101,20 +101,20 @@ const [buttonDisabled, setButtonDisabled] = useState(false);
                 walletAssets: updatedWalletAssets,
                 'history.deposits': updatedDeposits
             });
-    
+
             // Update local states
             setWalletAssets(updatedWalletAssets);
             setDeposits(updatedDeposits);
             setPurchasedCards(prev => [...prev, selectedCard]);
-    
+
             setCongratsMessage(
                 <div className="w-full flex justify-center flex-col items-center space-y-3">
                     <div className="w-full items-center justify-center flex flex-col space-y-2">
-                        <IoCheckmarkCircleSharp size={32} className={`text-accent`}/>
+                        <IoCheckmarkCircleSharp size={32} className={`text-accent`} />
                         <p className='font-medium text-center'>Congratulations!</p>
                     </div>
                     <span className="font-medium text-[20px] text-[#ffffff] pt-2 pb-2 flex items-center space-x-1">
-                        <img src='/ton.png' alt='refd' className='w-[22px]'/>
+                        <img src='/ton.png' alt='refd' className='w-[22px]' />
                         <span className={`text-accent`}>{selectedCard.profit}</span> <span>TON CLAIMED</span>
                     </span>
                     <p className="pb-6 text-[15px] w-full text-center">
@@ -122,7 +122,7 @@ const [buttonDisabled, setButtonDisabled] = useState(false);
                     </p>
                 </div>
             );
-    
+
             // Show the congrats modal
             setShowCongratsModal(true);
             setOpenUpgrade(false);
@@ -130,13 +130,13 @@ const [buttonDisabled, setButtonDisabled] = useState(false);
             setTimeout(() => {
                 setCongrats(false);
             }, 3000);
-    
+
             // Show a success message
             setMessage("Transaction sent successfully and card purchased!");
             setMessageColor("green");
         } catch (err) {
             console.error('Transaction error:', err);
-    
+
             if (err instanceof TonConnectError) {
                 if (err.message.includes('Operation aborted')) {
                     setMessage("Transaction was cancelled or timed out. Please try again.");
@@ -148,7 +148,7 @@ const [buttonDisabled, setButtonDisabled] = useState(false);
                 setMessage("An unexpected error occurred. Please try again.");
                 setMessageColor("red");
             }
-    
+
             if (err.response) {
                 console.error('Error response data:', err.response.data);
             }
@@ -158,9 +158,9 @@ const [buttonDisabled, setButtonDisabled] = useState(false);
             setButtonDisabled(false);
         }
     };
-    
 
-    
+
+
     // const handleClick = async () => {
     //     setButtonText("Processing...");
     //     setButtonDisabled(true);
@@ -186,7 +186,7 @@ const [buttonDisabled, setButtonDisabled] = useState(false);
     //     };
 
     //     const updatedDeposits = [...deposits, newDeposit];
-    
+
     //         // Update the user's Firestore document with the purchased card
     //         const userRef = doc(db, 'telegramUsers', id.toString());
     //         await updateDoc(userRef, {
@@ -230,14 +230,14 @@ const [buttonDisabled, setButtonDisabled] = useState(false);
     //                 setTimeout(() => {
     //                     setCongrats(false)
     //                 }, 3000);
-    
+
     //         // Show a success message
     //         setMessage("Transaction sent successfully and card purchased!");
     //         setMessageColor("green");
-    
+
     //     } catch (err) {
     //         console.error('Transaction error:', err);
-    
+
     //         if (err instanceof TonConnectError) {
     //             if (err.message.includes('Operation aborted')) {
     //                 setMessage("Transaction was cancelled or timed out. Please try again.");
@@ -249,7 +249,7 @@ const [buttonDisabled, setButtonDisabled] = useState(false);
     //             setMessage("An unexpected error occurred. Please try again.");
     //             setMessageColor("red");
     //         }
-    
+
     //         if (err.response) {
     //             console.error('Error response data:', err.response.data);
     //         }
@@ -257,7 +257,7 @@ const [buttonDisabled, setButtonDisabled] = useState(false);
     // };
 
 
-    
+
 
     const handleClickOutside = (event) => {
         if (infoRefTwo.current && !infoRefTwo.current.contains(event.target)) {
@@ -295,61 +295,61 @@ const [buttonDisabled, setButtonDisabled] = useState(false);
 
     return (
         <>
-{specialCards.map((card, index) => {
-    const isPurchased = purchasedCards.some(purchasedCard => purchasedCard.title === card.title);
+            {specialCards.map((card, index) => {
+                const isPurchased = purchasedCards.some(purchasedCard => purchasedCard.title === card.title);
 
-    return (
-        <button 
-            onClick={() => {
-                if (!isPurchased) {
-                    setSelectedCard(card);
-                    setOpenUpgrade(true);
-                }
-            }} 
-            key={index} 
-            className={`${card.class} w-[48%] py-3 relative rounded-[15px] [&:nth-child(2)]:!mt-0 text-[15px] flex flex-col items-center`}
-            disabled={isPurchased}
-            style={{ 
-                opacity: isPurchased ? 0.5 : 1, 
-                cursor: isPurchased ? 'not-allowed' : 'pointer' 
-            }}
-        >
-            <div className='w-[60%] pt-2 rounded-[4px]'>
-                <img src={card.icon} alt={`${card.title} icon`} className="w-full rounded-[8px] object-cover h-[60px]" />
-            </div>
+                return (
+                    <button
+                        onClick={() => {
+                            if (!isPurchased) {
+                                setSelectedCard(card);
+                                setOpenUpgrade(true);
+                            }
+                        }}
+                        key={index}
+                        className={`${card.class} w-[48%] py-3 relative rounded-[15px] [&:nth-child(2)]:!mt-0 text-[15px] flex flex-col items-center`}
+                        disabled={isPurchased}
+                        style={{
+                            opacity: isPurchased ? 0.5 : 1,
+                            cursor: isPurchased ? 'not-allowed' : 'pointer'
+                        }}
+                    >
+                        <div className='w-[60%] pt-2 rounded-[4px]'>
+                            <img src={card.icon} alt={`${card.title} icon`} className="w-full rounded-[8px] object-cover h-[60px]" />
+                        </div>
 
-            <h2 className='pt-1 font-medium'>{card.title}</h2>
-            <p className='text-[12px] text-secondary'>{card.tagline}</p>
+                        <h2 className='pt-1 font-medium'>{card.title}</h2>
+                        <p className='text-[12px] text-secondary'>{card.tagline}</p>
 
-            <div className="flex items-center space-x-1 pt-1">
-                <span className='text-[10px]'>Profit</span>
-                <img src='/ton.png' alt='coin' className='w-[12px]' />
-                <span className='text-[12px] font-semibold'>
-                    {formatNumber(card.profit)} TON
-                </span>
-            </div>
-            <div className='w-[80%] h-[1px] bg-[#A5A5A529] mt-[10px]' />
+                        <div className="flex items-center space-x-1 pt-1">
+                            <span className='text-[10px]'>Profit</span>
+                            <img src='/ton.png' alt='coin' className='w-[12px]' />
+                            <span className='text-[12px] font-semibold'>
+                                {formatNumber(card.profit)} TON
+                            </span>
+                        </div>
+                        <div className='w-[80%] h-[1px] bg-[#A5A5A529] mt-[10px]' />
 
-            <div className='flex items-center justify-center px-3 text-[14px] text-secondary font-semibold py-[6px]'>
-                <span className='flex items-center space-x-2'>
-                    <img src='/ton.png' alt='coin' className='w-[16px]' />
-                    <span className=''>{convertNanoToTon(card.cost)} TON</span>
-                </span>
-            </div>
-                {isPurchased && (
+                        <div className='flex items-center justify-center px-3 text-[14px] text-secondary font-semibold py-[6px]'>
+                            <span className='flex items-center space-x-2'>
+                                <img src='/ton.png' alt='coin' className='w-[16px]' />
+                                <span className=''>{convertNanoToTon(card.cost)} TON</span>
+                            </span>
+                        </div>
+                        {isPurchased && (
 
-            <div className={`absolute p${card.class} rounded-[15px] left-0 right-0 top-0 bottom-0 flex justify-center flex-col items-center text-center`}>
+                            <div className={`absolute p${card.class} rounded-[15px] left-0 right-0 top-0 bottom-0 flex justify-center flex-col items-center text-center`}>
 
-                <IoCheckmarkCircle size={40} className='text-green-500'/>
-                <h2 className='font-medium text-[13px] text-white px-4'>
-                    You now own this special card 😎
-                </h2>
+                                <IoCheckmarkCircle size={40} className='text-green-500' />
+                                <h2 className='font-medium text-[13px] text-white px-4'>
+                                    You now own this special card 😎
+                                </h2>
 
-            </div>
-                )}
-        </button>
-    );
-})}
+                            </div>
+                        )}
+                    </button>
+                );
+            })}
 
 
 
@@ -376,23 +376,23 @@ const [buttonDisabled, setButtonDisabled] = useState(false);
                                         {selectedCard.description}
                                     </p>
                                     <div className="pb-1 text-primary flex items-center justify-center w-full space-x-1 font-semibold text-[15px] px-4 text-center">
-                                       <span> Price:</span> <span className='pl-1'><img src='ton.png' alt='dfd' className='w-[14px] h-[14px]'/></span> <span>{convertNanoToTon(selectedCard.cost)}</span>  <span> TON</span> 
+                                        <span> Price:</span> <span className='pl-1'><img src='ton.png' alt='dfd' className='w-[14px] h-[14px]' /></span> <span>{convertNanoToTon(selectedCard.cost)}</span>  <span> TON</span>
                                     </div>
                                     <div className="pb-6 text-primary flex items-center justify-center w-full space-x-1 font-semibold text-[15px] px-4 text-center">
-                                       <span> Profit:</span> <span className='pl-1'><img src='ton.png' alt='dfd' className='w-[14px] h-[14px]'/></span> <span className='text-green-500 '>+{(selectedCard.profit)} TON</span> 
+                                        <span> Profit:</span> <span className='pl-1'><img src='ton.png' alt='dfd' className='w-[14px] h-[14px]' /></span> <span className='text-green-500 '>+{(selectedCard.profit)} TON</span>
                                     </div>
                                 </div>
 
                                 {wallet ? (
                                     <>
                                         <div className="w-full flex justify-center items-center flex-col space-y-2 pb-7">
-                                        <button 
-    onClick={handleClick} 
-    className={`${buttonDisabled ? 'bg-[#5A4420]' : 'bg-btn4'} text-[#000] w-full py-[18px] px-6 text-nowrap flex items-center justify-center text-center rounded-[12px] font-semibold text-[17px]`}
-    disabled={buttonDisabled}
->
-    {buttonText}
-</button>
+                                            <button
+                                                onClick={handleClick}
+                                                className={`${buttonDisabled ? 'bg-[#5A4420]' : 'bg-btn4'} text-[#000] w-full py-[18px] px-6 text-nowrap flex items-center justify-center text-center rounded-[12px] font-semibold text-[17px]`}
+                                                disabled={buttonDisabled}
+                                            >
+                                                {buttonText}
+                                            </button>
 
                                         </div>
 
@@ -404,7 +404,7 @@ const [buttonDisabled, setButtonDisabled] = useState(false);
                                     </>
                                 ) : (
                                     <div className='w-full flex flex-col items-center justify-center space-y-4'>
-                                    <TonConnectButton className="!w-full" />
+                                        <TonConnectButton className="!w-full" />
                                     </div>
                                 )}
                             </div>
@@ -414,32 +414,32 @@ const [buttonDisabled, setButtonDisabled] = useState(false);
             )}
 
 
-<div className='w-full absolute top-[50px] flex justify-center z-50 pointer-events-none select-none'>
-      {congrats ? (<img src='/congrats.gif' alt="congrats" className="w-[80%]"/>) : (<></>)}
-      </div>
+            <div className='w-full absolute top-[50px] flex justify-center z-50 pointer-events-none select-none'>
+                {congrats ? (<img src='/congrats.gif' alt="congrats" className="w-[80%]" />) : (<></>)}
+            </div>
 
 
 
-      <div
-        className={`${showCongratsModal === true ? "visible" : "invisible"} fixed top-[-12px] bottom-0 left-0 z-40 right-0 h-[100vh] bg-[#00000042] flex justify-center items-center backdrop-blur-[6px] px-4`}
-      >
-        <div className={`${showCongratsModal === true ? "opacity-100 mt-0 ease-in duration-300" : "opacity-0 mt-[100px]"} w-full bg-modal relative rounded-[16px] flex flex-col justify-center p-8`}>
-          
-          
-            {congratsMessage}
-
-        
-
-          <div className="w-full flex justify-center">
-            <button
-              onClick={() => setShowCongratsModal(false)}
-              className={`bg-btn4 w-full py-[16px] px-6 flex items-center justify-center text-center rounded-[12px] font-medium text-[16px]`}
+            <div
+                className={`${showCongratsModal === true ? "visible" : "invisible"} fixed top-[-12px] bottom-0 left-0 z-40 right-0 h-[100vh] bg-[#00000042] flex justify-center items-center backdrop-blur-[6px] px-4`}
             >
-              Continue mining
-            </button>
-          </div>
-        </div>
-      </div>
+                <div className={`${showCongratsModal === true ? "opacity-100 mt-0 ease-in duration-300" : "opacity-0 mt-[100px]"} w-full bg-modal relative rounded-[16px] flex flex-col justify-center p-8`}>
+
+
+                    {congratsMessage}
+
+
+
+                    <div className="w-full flex justify-center">
+                        <button
+                            onClick={() => setShowCongratsModal(false)}
+                            className={`bg-btn4 w-full py-[16px] px-6 flex items-center justify-center text-center rounded-[12px] font-medium text-[16px]`}
+                        >
+                            Continue mining
+                        </button>
+                    </div>
+                </div>
+            </div>
         </>
     )
 }

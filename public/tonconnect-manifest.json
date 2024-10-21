@@ -1,7 +1,7 @@
 {
-    "url": "https://maxitaps939v.netlify.app", 
-    "name": "MaxiTap Airdrop",                   
-    "iconUrl": "https://maxitaps939v.netlify.app/loader.webp",          
-    "termsOfUseUrl": "",  
-    "privacyPolicyUrl": "" 
+    "url": "https://kabosutapgame.netlify.app",
+    "name": "Kabosu Tap Game",
+    "iconUrl": "https://kabosutapgame.netlify.app/ktaplogo.png",
+    "termsOfUseUrl": "https://kabosutapgame.netlify.app/terms",
+    "privacyPolicyUrl": "https://kabosutapgame.netlify.app/privacy"
 }
