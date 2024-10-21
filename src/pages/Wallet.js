@@ -278,17 +278,17 @@ const Wallet = () => {
         </span>
             </div>
             <h3 className="font-medium text-center text-[18px] text-[#ffffff] pt-2 pb-2 uppercase">
-         WITHDRAWAL ACCESS LOCKED!
+         WITHDRAWAL SOON
             </h3>
             <p className="pb-6 text-[14px] w-full text-center">
-          You need to purchase atleast 2 Special Cards in mine activity to unlock withdrawal access! </p>
+          Collect as many coins as you can, buy the cards and invite friends and complete the tasks. Good luck. </p>
           </div>
           <div className="w-full flex justify-center pb-6 pt-4">
 
           <NavLink to='/mine'
               className={`bg-btn4 text-[#000] w-full py-[12px] px-6 flex items-center justify-center text-center rounded-[12px] font-medium text-[16px]`}
             >
-             Purchase Special Cards
+             AVAILABLE SOON
             </NavLink>
           </div>
           </div>

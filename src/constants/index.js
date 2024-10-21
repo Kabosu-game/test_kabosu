@@ -1,6 +1,6 @@
 export const images = {
-    logo: '/ktaplogo.png', // if using local images
-    tapImage: "/ktaplogo.png",
+    logo: '/tap logo.jpg', // if using local images
+    tapImage: "/tap logo.jpg",
     loadingScreen: '/', // if using URLs
   };
   

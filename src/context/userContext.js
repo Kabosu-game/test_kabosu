@@ -512,7 +512,7 @@ export const UserProvider = ({ children }) => {
           character: { name: '', avatar: '/user.webp' },
           freeGuru: 3,
           tapValue: { level: 1, value: 1 },
-          level: { id: 1, name: "Bronze", imgUrl: "/bronze.webp" },
+          level: { id: 1, name: "Bronze", imgUrl: "/bronze.png" },
           selectedExchange: { id: 'selectex', icon: '/exchange.svg', name: 'Choose exchange' },
           energy: 500,
           battery: { level: 1, energy: 500 },
@@ -538,7 +538,7 @@ export const UserProvider = ({ children }) => {
                 userId: userId.toString(),
                 username: finalUsername,
                 balance: 0,
-                level: { id: 1, name: "Bronze", imgUrl: "/bronze.webp" },
+                level: { id: 1, name: "Bronze", imgUrl: "/bronze.png" },
               })
             });
           }
