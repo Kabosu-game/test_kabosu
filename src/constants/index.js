@@ -1,6 +1,6 @@
 export const images = {
-    logo: '/tap logo.jpg', // if using local images
-    tapImage: "/tap logo.jpg",
+    logo: '/tap logo.png', // if using local images
+    tapImage: "/tap logo.png",
     loadingScreen: '/', // if using URLs
   };
   
